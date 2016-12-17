@@ -135,6 +135,22 @@ public class MySQL {
         
     }
     
+    public Float getPrecioProd(String nombre) {
+        
+        try {
+            String Query = "SELECT precio FROM productos WHERE nombre='"+nombre+"'";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            rs.next();
+            Float resultado = rs.getFloat("precio");
+            System.out.println(resultado);
+            return resultado;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e);
+            return null;
+        }
+    }
+    
      public void buscarPorCategoria(JList list, String cadena){
         DefaultListModel model = new DefaultListModel();
         try {            

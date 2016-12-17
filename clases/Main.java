@@ -21,7 +21,7 @@ public class Main {
         
         MySQL db = new MySQL();
 
-        db.MySQLConnection("root", "", "/proyecto_colibri");       
+              
 
         db.MySQLConnection("root", "", "/proyecto_colibri");
         //db.getAll("productos");

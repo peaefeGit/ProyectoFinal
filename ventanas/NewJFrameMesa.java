@@ -40,7 +40,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         setTitle("Colibrí Arte y Cultura - Cuenta");     
         
         //llena lista base datos
-        //db.llenarJlist(jListPlato);
+        db.llenarJlist(jListPlato);
         
     }
 
@@ -113,6 +113,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonPlato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonPlatoMouseClicked(evt);
+            }
+        });
+        jButtonPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPlatoActionPerformed(evt);
             }
         });
 
@@ -535,9 +540,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
 
     private void jButtonPlatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlatoMouseClicked
         String opcion = jListPlato.getSelectedValue();
-        System.out.println(opcion);
+        //System.out.println(opcion);
+        
+        float precio = db.getPrecioProd(opcion);
         DefaultListModel  modelo = (DefaultListModel) jListCuenta.getModel();
-        modelo.addElement(opcion);
+        modelo.addElement(precio);
         jListCuenta.setModel(modelo);  
     }//GEN-LAST:event_jButtonPlatoMouseClicked
     public JButton getButton(){
@@ -626,6 +633,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jTextFieldPlatoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPlatoKeyReleased
        db.buscarPlatos(jListPlato, jTextFieldPlato.getText(), ultimoBoton);       
     }//GEN-LAST:event_jTextFieldPlatoKeyReleased
+
+    private void jButtonPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonPlatoActionPerformed
 
     /**
      * @param args the command line arguments
