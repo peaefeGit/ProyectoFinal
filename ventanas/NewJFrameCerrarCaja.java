@@ -38,6 +38,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         //buscarle lugar! aca no va
         jLabelTotal.setText(jLabelTotal.getText()+this.cajaActual.getMonto().toString());
         jTextAperturaCaja.setText(this.cajaActual.getMontoApertura().toString());
+        jTextAperturaCaja.setEditable(false);
          }
 
     @SuppressWarnings("unchecked")
@@ -366,7 +367,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
        if (ok){       
             int eleccion = JOptionPane.showConfirmDialog(null," CAJA CERRADA EXITOSAMENTE - desea abrir una nueva caja?", " CERRAR CAJA ", JOptionPane.INFORMATION_MESSAGE);
             if (eleccion == JOptionPane.YES_OPTION){
-                NewJFrameLogin cc = new NewJFrameLogin(this.bd);
+                String t = jTextFieldProxCaja.getText();
+                Double prox = Double.parseDouble(t);
+                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox);
                 cc.setVisible(true);
                 this.dispose();
             }else if (eleccion == JOptionPane.NO_OPTION){
@@ -405,6 +408,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
            evt.consume();
        }  
         
+        if (k == KeyEvent.VK_ENTER){
+           jButtonConfirmar.doClick();
+        }
     }//GEN-LAST:event_jTextFieldRetEfectivoKeyTyped
 
     private void jTextFieldExtraProxCajaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldExtraProxCajaKeyTyped
@@ -425,6 +431,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
            evt.consume();
        }
+       if (k == KeyEvent.VK_ENTER){
+           jButtonConfirmar.doClick();
+        }
     }//GEN-LAST:event_jTextFieldExtraProxCajaKeyTyped
 
     private void jTextFieldRetEfectivoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRetEfectivoKeyReleased

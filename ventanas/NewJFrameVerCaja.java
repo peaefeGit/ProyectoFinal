@@ -26,6 +26,8 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         //setDefaultCloseOperation(0);//anula la CRUZ exit
         setTitle("Colibrí Arte y Cultura - Ver Caja");
         //buscarle lugar! aca no va!
+        jTextFieldApertura.setText(this.cajaActual.getMontoApertura().toString());
+        jTextFieldApertura.setEditable(false);
         jLabelTotal.setText(jLabelTotal.getText()+this.cajaActual.getMonto().toString());
     }
 
@@ -40,8 +42,6 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
 
         jPanelCaja = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
-        jScrollPaneAperturaCaja = new javax.swing.JScrollPane();
-        jListAperturaCaja = new javax.swing.JList<>();
         jLabelAperturaCaja = new javax.swing.JLabel();
         jLabelGasto = new javax.swing.JLabel();
         jScrollPaneGasto = new javax.swing.JScrollPane();
@@ -51,6 +51,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jLabelVenta = new javax.swing.JLabel();
         jButtonCerrar = new javax.swing.JButton();
         jLabelTotal = new javax.swing.JLabel();
+        jTextFieldApertura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,8 +60,6 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
 
         jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTitulo.setText("Caja");
-
-        jScrollPaneAperturaCaja.setViewportView(jListAperturaCaja);
 
         jLabelAperturaCaja.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelAperturaCaja.setText("Apertura de caja");
@@ -102,8 +101,8 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
                                 .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabelGasto)
                                     .addComponent(jLabelAperturaCaja)
-                                    .addComponent(jScrollPaneAperturaCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                    .addComponent(jScrollPaneGasto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addComponent(jScrollPaneGasto, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldApertura))
                                 .addGap(37, 37, 37)
                                 .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelVenta)
@@ -125,7 +124,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCajaLayout.createSequentialGroup()
-                        .addComponent(jScrollPaneAperturaCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelGasto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,12 +198,11 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JLabel jLabelVenta;
-    private javax.swing.JList<String> jListAperturaCaja;
     private javax.swing.JList<String> jListGasto;
     private javax.swing.JList<String> jListVenta;
     public javax.swing.JPanel jPanelCaja;
-    private javax.swing.JScrollPane jScrollPaneAperturaCaja;
     private javax.swing.JScrollPane jScrollPaneGasto;
     private javax.swing.JScrollPane jScrollPaneVenta;
+    private javax.swing.JTextField jTextFieldApertura;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,9 +20,16 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     private Caja cajaA;
     private MySQL db;
     
+    public NewJFrameLogin(MySQL db, Double montoInicial){
+        this.db  = db;
+        initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Colibrí Arte y Cultura");
+        jTextFieldMontoApertura.setText(montoInicial.toString());
+        jTextFieldMontoApertura.setEditable(false);
+    }
     public NewJFrameLogin(MySQL db) {
-      
-        
         this.db  = db;
         initComponents();
         setLocationRelativeTo(null);
@@ -63,6 +70,11 @@ public class NewJFrameLogin extends javax.swing.JFrame {
                 jTextFieldUsuarioActionPerformed(evt);
             }
         });
+        jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldUsuarioKeyTyped(evt);
+            }
+        });
 
         jButtonLogin.setText("Ingresar");
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +97,11 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         jPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldActionPerformed(evt);
+            }
+        });
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyTyped(evt);
             }
         });
 
@@ -168,7 +185,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
        if (actual){
          Usuario logueado = new Usuario(jTextFieldUsuario.getText(), jPasswordField.getText()); 
          Double f = Double.parseDouble(jTextFieldMontoApertura.getText()); 
-         this.cajaA = new Caja(f, logueado);//prueba de caja
+         this.cajaA = new Caja(f, logueado);
          NewJFramePrincipal cc = new NewJFramePrincipal(db, this.cajaA);
          cc.setVisible(true);
          dispose();
@@ -204,7 +221,29 @@ public class NewJFrameLogin extends javax.swing.JFrame {
            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
            evt.consume();
        }
+       if (k == KeyEvent.VK_ENTER){
+           jButtonLogin.doClick();
+        }
     }//GEN-LAST:event_jTextFieldMontoAperturaKeyTyped
+
+    private void jTextFieldUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioKeyTyped
+       
+        //aprestas enter y te activa el boton!
+        char teclaPres = evt.getKeyChar();
+        if (teclaPres == KeyEvent.VK_ENTER){
+           jButtonLogin.doClick();
+        }
+    }//GEN-LAST:event_jTextFieldUsuarioKeyTyped
+
+    private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
+        char teclaPres = evt.getKeyChar();
+        if (teclaPres == KeyEvent.VK_ENTER){
+           jButtonLogin.doClick();
+        }
+        
+        //tira una exception!! hay q ver solamente cuando apretas enter en la password
+        
+    }//GEN-LAST:event_jPasswordFieldKeyTyped
 
     /**
      * @param args the command line arguments

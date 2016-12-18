@@ -127,6 +127,7 @@
         <Component class="javax.swing.JTextField" name="jTextFieldUsuario">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUsuarioActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldUsuarioKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonLogin">
@@ -158,6 +159,7 @@
         <Component class="javax.swing.JPasswordField" name="jPasswordField">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldKeyTyped"/>
           </Events>
         </Component>
       </SubComponents>

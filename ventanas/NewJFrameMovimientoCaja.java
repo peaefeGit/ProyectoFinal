@@ -224,9 +224,9 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 } 
                 jTextFieldMonto.setText("");
                 jTextFieldDescripcion.setText("");
-                
+                JOptionPane.showMessageDialog(null, "MOVIMIENTO REALIZADO", "Movimiento de Caja", JOptionPane.WARNING_MESSAGE);
             }else if (eleccion == JOptionPane.CANCEL_OPTION){
-           
+                
             }else if (eleccion == JOptionPane.CLOSED_OPTION){
            
             } 
@@ -241,7 +241,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
             System.out.println(cajaActual.getMonto());
             
             //mensaje operacion exitosa
-            JOptionPane.showMessageDialog(null, "MOVIMIENTO REALIZADO", "Movimiento de Caja", JOptionPane.WARNING_MESSAGE);         
+                     
        }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO EN EL INGRESO DE DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
