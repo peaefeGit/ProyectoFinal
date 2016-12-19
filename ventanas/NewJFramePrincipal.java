@@ -904,7 +904,7 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditarMenuMouseClicked
 
     private void jButtonMovCajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMovCajaMouseClicked
-       NewJFrameMovimientoCaja cc = new NewJFrameMovimientoCaja(this, this.cajaActual);
+       NewJFrameMovimientoCaja cc = new NewJFrameMovimientoCaja(this, this.cajaActual, this.db);
        cc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonMovCajaMouseClicked

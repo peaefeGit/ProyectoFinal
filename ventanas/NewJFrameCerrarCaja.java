@@ -87,12 +87,24 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
 
         jLabelUsuarioA.setText("Usuario: ");
 
+        jTextFieldUsuarioA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldUsuarioAKeyTyped(evt);
+            }
+        });
+
         jLabelPasswordA.setText("Contraseña: ");
 
         jLabelTituloUsuarioA.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTituloUsuarioA.setText("Usuario Actual");
 
         jLabelUsuarioP.setText("Usuario: ");
+
+        jTextFieldUsuarioP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldUsuarioPKeyTyped(evt);
+            }
+        });
 
         jLabelPasswordP.setText("Contraseña: ");
 
@@ -103,6 +115,11 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jButtonCerrarCaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonCerrarCajaMouseClicked(evt);
+            }
+        });
+        jButtonCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarCajaActionPerformed(evt);
             }
         });
 
@@ -118,6 +135,18 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jLabelGasto.setText("Gastos / Egresos");
 
         jScrollPaneGasto.setViewportView(jListGasto);
+
+        jPasswordFieldActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldActualKeyTyped(evt);
+            }
+        });
+
+        jPasswordFieldUsuarioP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldUsuarioPKeyTyped(evt);
+            }
+        });
 
         jButtonMenuPrincipal.setText("Menu Principal");
         jButtonMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,6 +194,11 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jButtonConfirmar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonConfirmarMouseClicked(evt);
+            }
+        });
+        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarActionPerformed(evt);
             }
         });
 
@@ -350,39 +384,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuPrincipalMouseClicked
 
     private void jButtonCerrarCajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCajaMouseClicked
-       boolean ok = false;
-        //boton confirmar proxima caja
-        if (jButtonConfirmar.getBackground().equals(Color.green)){
-            boolean uProx = this.bd.validarLogin(jPasswordFieldUsuarioP, jTextFieldUsuarioP);
-            boolean uActual = this.bd.validarLogin(jPasswordFieldActual, jTextFieldUsuarioA);
-            if (uProx && uActual){
-                ok = true;
-            }else{
-                JOptionPane.showMessageDialog(null, "ERROR en nombre de usuario o contraseña");
-                }
-        }else{
-            JOptionPane.showMessageDialog(null, "ERROR falta confirmar proxima caja");
-        }      
-       //si caja cerrada exitosamente
-       if (ok){       
-            int eleccion = JOptionPane.showConfirmDialog(null," CAJA CERRADA EXITOSAMENTE - desea abrir una nueva caja?", " CERRAR CAJA ", JOptionPane.INFORMATION_MESSAGE);
-            if (eleccion == JOptionPane.YES_OPTION){
-                String t = jTextFieldProxCaja.getText();
-                Double prox = Double.parseDouble(t);
-                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox);
-                cc.setVisible(true);
-                this.dispose();
-            }else if (eleccion == JOptionPane.NO_OPTION){
-                this.dispose();
-                System.exit(0);
-            }else if (eleccion == JOptionPane.CANCEL_OPTION){
-                this.dispose();
-                System.exit(0);
-            }else if (eleccion == JOptionPane.CLOSED_OPTION){
-                this.dispose();
-                System.exit(0);
-            }
-       }
+      //borrar
     }//GEN-LAST:event_jButtonCerrarCajaMouseClicked
 
     private void jTextFieldProxCajaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProxCajaKeyTyped
@@ -433,7 +435,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
        }
        if (k == KeyEvent.VK_ENTER){
            jButtonConfirmar.doClick();
-        }
+       }
     }//GEN-LAST:event_jTextFieldExtraProxCajaKeyTyped
 
     private void jTextFieldRetEfectivoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRetEfectivoKeyReleased
@@ -441,7 +443,63 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldRetEfectivoKeyReleased
 
     private void jButtonConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmarMouseClicked
-       try{
+       //borrAR
+    }//GEN-LAST:event_jButtonConfirmarMouseClicked
+
+    private void jTextFieldUsuarioAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioAKeyTyped
+       presEnterCerrarCaja(evt);        
+    }//GEN-LAST:event_jTextFieldUsuarioAKeyTyped
+
+    private void jPasswordFieldActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldActualKeyTyped
+       presEnterCerrarCaja(evt);
+    }//GEN-LAST:event_jPasswordFieldActualKeyTyped
+
+    private void jTextFieldUsuarioPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioPKeyTyped
+        presEnterCerrarCaja(evt);
+    }//GEN-LAST:event_jTextFieldUsuarioPKeyTyped
+
+    private void jPasswordFieldUsuarioPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldUsuarioPKeyTyped
+        presEnterCerrarCaja(evt);
+    }//GEN-LAST:event_jPasswordFieldUsuarioPKeyTyped
+
+    private void jButtonCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarCajaActionPerformed
+        boolean ok = false;
+        //boton confirmar proxima caja
+        if (jButtonConfirmar.getBackground().equals(Color.green)){
+            boolean uProx = this.bd.validarLogin(jPasswordFieldUsuarioP, jTextFieldUsuarioP);
+            boolean uActual = this.bd.validarLogin(jPasswordFieldActual, jTextFieldUsuarioA);
+            if (uProx && uActual){
+                ok = true;
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR en nombre de usuario o contraseña");
+                }
+        }else{
+            JOptionPane.showMessageDialog(null, "ERROR falta confirmar proxima caja");
+        }      
+       //si caja cerrada exitosamente
+       if (ok){       
+            int eleccion = JOptionPane.showConfirmDialog(null," CAJA CERRADA EXITOSAMENTE - desea abrir una nueva caja?", " CERRAR CAJA ", JOptionPane.INFORMATION_MESSAGE);
+            if (eleccion == JOptionPane.YES_OPTION){
+                String t = jTextFieldProxCaja.getText();
+                Double prox = Double.parseDouble(t);
+                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox);
+                cc.setVisible(true);
+                this.dispose();
+            }else if (eleccion == JOptionPane.NO_OPTION){
+                this.dispose();
+                System.exit(0);
+            }else if (eleccion == JOptionPane.CANCEL_OPTION){
+                this.dispose();
+                System.exit(0);
+            }else if (eleccion == JOptionPane.CLOSED_OPTION){
+                this.dispose();
+                System.exit(0);
+            }
+       } 
+    }//GEN-LAST:event_jButtonCerrarCajaActionPerformed
+
+    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
+        try{
         String dato1 = jTextFieldRetEfectivo.getText();
         Double dat1 = Double.parseDouble(dato1);
         String dato2 = jTextFieldExtraProxCaja.getText();
@@ -452,8 +510,13 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "ERROR faltan ingresar datos");
        } 
-    }//GEN-LAST:event_jButtonConfirmarMouseClicked
-    
+    }//GEN-LAST:event_jButtonConfirmarActionPerformed
+    public void presEnterCerrarCaja (java.awt.event.KeyEvent evt){
+        char teclaPres = evt.getKeyChar();
+        if (teclaPres == KeyEvent.VK_ENTER){
+           jButtonCerrarCaja.doClick();
+        }
+    }
     /**
      * @param args the command line arguments
      */

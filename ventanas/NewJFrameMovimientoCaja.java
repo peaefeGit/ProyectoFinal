@@ -6,6 +6,7 @@
 package ventanas;
 
 import clases.Caja;
+import clases.MySQL;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -15,12 +16,14 @@ import javax.swing.JOptionPane;
  * @author hp desktop
  */
 public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
+    private MySQL bd;
     private NewJFramePrincipal principal;
     private Caja cajaActual;
     /**
      * Creates new form NewJFrameMovimientoCaja
      */
-    public NewJFrameMovimientoCaja(NewJFramePrincipal principal, Caja cajaA) {
+    public NewJFrameMovimientoCaja(NewJFramePrincipal principal, Caja cajaA, MySQL bd) {
+        this.bd= bd;
         this.cajaActual = cajaA;
         this.principal = principal;
         initComponents();
@@ -71,6 +74,11 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jTextFieldDescripcionActionPerformed(evt);
             }
         });
+        jTextFieldDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDescripcionKeyTyped(evt);
+            }
+        });
 
         jLabelMonto.setText("Monto        $");
 
@@ -89,7 +97,19 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
 
         jLabelUsuario.setText("Usuario");
 
+        jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldUsuarioKeyTyped(evt);
+            }
+        });
+
         jLabelPassword.setText("Contraseña");
+
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyTyped(evt);
+            }
+        });
 
         jButtonMenuPrincipal.setText("Menu Principal");
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -207,30 +227,31 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
     private void jButtonMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMovimientoActionPerformed
    try{ 
             // falta la parte de la validacion de usuario
-            if (jTextFieldDescripcion.equals("")){
-                // falta tirar la exception q te obligue a escribir una descripcion!
-            }
-            int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
-            if (eleccion == JOptionPane.YES_OPTION){
-                String movStr = jTextFieldMonto.getText();
-                Double mov = Double.parseDouble(movStr);
-                if (jRadioButtonDeposito.isSelected()){
-                    cajaActual.setMonto(cajaActual.getMonto() + mov);
-                    cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText());
-                }
-                if (jRadioButtonExtraccion.isSelected()){
-                     cajaActual.setMonto(cajaActual.getMonto() - mov);
-                     cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText());
-                } 
-                jTextFieldMonto.setText("");
-                jTextFieldDescripcion.setText("");
-                JOptionPane.showMessageDialog(null, "MOVIMIENTO REALIZADO", "Movimiento de Caja", JOptionPane.WARNING_MESSAGE);
-            }else if (eleccion == JOptionPane.CANCEL_OPTION){
+                int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
+                if (eleccion == JOptionPane.YES_OPTION){
+                    boolean actual = this.bd.validarLogin(jPasswordField, jTextFieldUsuario);
+                    if (actual){  
+                         String movStr = jTextFieldMonto.getText();
+                         Double mov = Double.parseDouble(movStr);
+                         if (jRadioButtonDeposito.isSelected()){
+                            cajaActual.setMonto(cajaActual.getMonto() + mov);
+                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText());
+                        }
+                         if (jRadioButtonExtraccion.isSelected()){
+                            cajaActual.setMonto(cajaActual.getMonto() - mov);
+                            cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText());
+                        } 
+                        JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
+                        jTextFieldMonto.setText("");
+                        jTextFieldDescripcion.setText("");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error en el ingreso de datos del usuario");
+                    }
+                }else if (eleccion == JOptionPane.CANCEL_OPTION){
                 
-            }else if (eleccion == JOptionPane.CLOSED_OPTION){
+                }else if (eleccion == JOptionPane.CLOSED_OPTION){
            
-            } 
-            
+                } 
             
             //prueba en consola
             Iterator<String> itr = this.cajaActual.getMovimiento().iterator();
@@ -274,9 +295,28 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
        }else{
            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
            evt.consume();
+       }if (k == KeyEvent.VK_ENTER){
+           jButtonMovimiento.doClick();
        }
     }//GEN-LAST:event_jTextFieldMontoKeyTyped
 
+    private void jTextFieldDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionKeyTyped
+       presEnterMovimientoCaja(evt);
+    }//GEN-LAST:event_jTextFieldDescripcionKeyTyped
+
+    private void jTextFieldUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioKeyTyped
+        presEnterMovimientoCaja(evt);
+    }//GEN-LAST:event_jTextFieldUsuarioKeyTyped
+
+    private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
+        presEnterMovimientoCaja(evt);
+    }//GEN-LAST:event_jPasswordFieldKeyTyped
+    public void presEnterMovimientoCaja (java.awt.event.KeyEvent evt){
+        char teclaPres = evt.getKeyChar();
+        if (teclaPres == KeyEvent.VK_ENTER){
+           jButtonMovimiento.doClick();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -307,7 +347,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrameMovimientoCaja(null, null).setVisible(true);
+                new NewJFrameMovimientoCaja(null, null, null).setVisible(true);
             }
         });
     }

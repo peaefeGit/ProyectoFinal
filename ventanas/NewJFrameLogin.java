@@ -178,6 +178,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+      try{
        boolean actual = this.db.validarLogin(jPasswordField, jTextFieldUsuario);  
       /*
        * Verifico si el login fue valido
@@ -193,6 +194,9 @@ public class NewJFrameLogin extends javax.swing.JFrame {
        }else{
            JOptionPane.showMessageDialog(null, "Error en el Usuario o en la Contraseña");
        }
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "Error en el ingreso de datos");
+      }
        
        
     }//GEN-LAST:event_jButtonLoginActionPerformed

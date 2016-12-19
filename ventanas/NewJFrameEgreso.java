@@ -61,6 +61,12 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
 
         jLabelMonto.setText("Monto:        $ ");
 
+        jTextFieldDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDescripcionKeyTyped(evt);
+            }
+        });
+
         jTextFieldMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldMontoActionPerformed(evt);
@@ -211,8 +217,21 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
            evt.consume();
        }
+       if (k == KeyEvent.VK_ENTER){
+           jButtonEgreso.doClick();
+       }
     }//GEN-LAST:event_jTextFieldMontoKeyTyped
 
+    private void jTextFieldDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionKeyTyped
+        
+        presEnterEgreso(evt);
+    }//GEN-LAST:event_jTextFieldDescripcionKeyTyped
+    public void presEnterEgreso (java.awt.event.KeyEvent evt){
+        char teclaPres = evt.getKeyChar();
+        if (teclaPres == KeyEvent.VK_ENTER){
+           jButtonEgreso.doClick();
+        }
+    }
     /**
      * @param args the command line arguments
      */

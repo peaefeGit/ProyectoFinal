@@ -170,6 +170,7 @@
         <Component class="javax.swing.JTextField" name="jTextFieldDescripcion">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDescripcionActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDescripcionKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMonto">
@@ -196,6 +197,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldUsuario">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldUsuarioKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelPassword">
           <Properties>
@@ -203,6 +207,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonMenuPrincipal">
           <Properties>
