@@ -7,6 +7,7 @@ package ventanas;
 
 import clases.Caja;
 import clases.MySQL;
+import clases.Producto;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -14,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -26,6 +29,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private MySQL db;
     private Caja cajaActual;
     private String ultimoBoton = "prueba";
+    private Double total;
     //traje la caja hasta aca solamente. falta sumar precios de productos en la cuenta
     
     public NewJFrameMesa(NewJFramePrincipal principal, MySQL db, JButton btn, Caja cajaA) {
@@ -33,6 +37,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         this.btn = btn;
         this.db = db;
         this.principal = principal;
+        
+        this.total = 0.0;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -66,14 +72,14 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jLabelPlato = new javax.swing.JLabel();
         jLabelIngrediente = new javax.swing.JLabel();
         jPanelCuenta = new javax.swing.JPanel();
-        jScrollPaneCuenta = new javax.swing.JScrollPane();
-        jListCuenta = new javax.swing.JList<>();
-        DefaultListModel modelo = new DefaultListModel();
         jButtonBorrar = new javax.swing.JButton();
         jButtonDescuento = new javax.swing.JButton();
         jButtonCerrarCuenta = new javax.swing.JButton();
         jLabelCuenta = new javax.swing.JLabel();
         jLabelTotal = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCuenta = new javax.swing.JTable();
+        jTextFieldTotal = new javax.swing.JTextField();
         jLabelMesa = new javax.swing.JLabel();
         jTextFieldMesa = new javax.swing.JTextField();
         jCheckBoxMesa = new javax.swing.JCheckBox();
@@ -129,9 +135,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
 
         jPanelCuenta.setBackground(new java.awt.Color(51, 153, 255));
 
-        jListCuenta.setModel(modelo);
-        jScrollPaneCuenta.setViewportView(jListCuenta);
-
         jButtonBorrar.setText("Borrar");
         jButtonBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -157,46 +160,63 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTotal.setText("TOTAL: $ ");
 
+        jTableCuenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Producto", "Cantidad", "Precio"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableCuenta);
+
+        jTextFieldTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTotalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelCuentaLayout = new javax.swing.GroupLayout(jPanelCuenta);
         jPanelCuenta.setLayout(jPanelCuentaLayout);
         jPanelCuentaLayout.setHorizontalGroup(
             jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCuentaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCuentaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPaneCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)))
-                .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonDescuento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCerrarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCuentaLayout.createSequentialGroup()
+                                .addComponent(jLabelTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonDescuento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCerrarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelCuentaLayout.createSequentialGroup()
+                        .addComponent(jLabelCuenta)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jLabelCuenta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelCuentaLayout.setVerticalGroup(
             jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCuentaLayout.createSequentialGroup()
+            .addGroup(jPanelCuentaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelCuenta)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCuentaLayout.createSequentialGroup()
                         .addComponent(jButtonBorrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonDescuento))
-                    .addComponent(jScrollPaneCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotal)
-                    .addComponent(jButtonCerrarCuenta))
+                    .addComponent(jButtonCerrarCuenta)
+                    .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53))
         );
 
@@ -393,7 +413,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                         .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonPostre, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 36, Short.MAX_VALUE)
+                .addGap(0, 30, Short.MAX_VALUE)
                 .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelMesaLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
@@ -517,7 +537,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarCuentaMouseEntered
 
     private void jButtonCerrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseClicked
-       int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
+       int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
@@ -541,21 +561,38 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonPlatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlatoMouseClicked
         String opcion = jListPlato.getSelectedValue();
         //System.out.println(opcion);
+        Producto p = db.getProducto(opcion);
+        total = total + p.getPrecio();
+        jTextFieldTotal.setText(total.toString() );
+        //System.out.println(p.toString());
         
-        float precio = db.getPrecioProd(opcion);
-        DefaultListModel  modelo = (DefaultListModel) jListCuenta.getModel();
-        modelo.addElement(precio);
-        jListCuenta.setModel(modelo);  
+        DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+        Object[] row = new Object[3];
+        row[0] = p.getNombre();
+        row[1] =  1;
+        row[2] =  p.getPrecio();
+        model.addRow(row);
+        jTableCuenta.setModel(model);
+        //float precio = db.getPrecioProd(opcion);
+        //DefaultListModel  modelo = (DefaultListModel) jListCuenta.getModel();
+        //modelo.addElement(precio);
+        //jListCuenta.setModel(modelo);  
     }//GEN-LAST:event_jButtonPlatoMouseClicked
     public JButton getButton(){
         return this.btn;
     }
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
-        String opcion = jListCuenta.getSelectedValue();
+        
+        int i = jTableCuenta.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+        model.removeRow(i);
+        
+        
+        /*String opcion = jListCuenta.getSelectedValue();
         System.out.println(opcion);
         DefaultListModel  modelo = (DefaultListModel) jListCuenta.getModel();
         modelo.removeElement(opcion);
-        jListCuenta.setModel(modelo);  
+        jListCuenta.setModel(modelo);  */
     }//GEN-LAST:event_jButtonBorrarMouseClicked
 
     private void jButtonBorrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarCuentaMouseClicked
@@ -638,6 +675,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonPlatoActionPerformed
 
+    private void jTextFieldTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTotalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -699,16 +740,17 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMesa;
     private javax.swing.JLabel jLabelPlato;
     private javax.swing.JLabel jLabelTotal;
-    private javax.swing.JList<String> jListCuenta;
     private javax.swing.JList<String> jListIngrediente;
     private javax.swing.JList<String> jListPlato;
     private javax.swing.JPanel jPanelCuenta;
     private javax.swing.JPanel jPanelMesa;
-    private javax.swing.JScrollPane jScrollPaneCuenta;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneIngrediente;
     private javax.swing.JScrollPane jScrollPanePlato;
+    private javax.swing.JTable jTableCuenta;
     private javax.swing.JTextField jTextFieldIngrediente;
     private javax.swing.JTextField jTextFieldMesa;
     private javax.swing.JTextField jTextFieldPlato;
+    private javax.swing.JTextField jTextFieldTotal;
     // End of variables declaration//GEN-END:variables
 }
