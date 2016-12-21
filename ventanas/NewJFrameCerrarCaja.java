@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ventanas;
 
 import clases.Caja;
@@ -14,17 +9,11 @@ import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author hp desktop
- */
 public class NewJFrameCerrarCaja extends javax.swing.JFrame {
     private NewJFramePrincipal principal;
     private Caja cajaActual;
     private MySQL bd;
-    /**
-     * Creates new form NewJFrameCerrarCaja
-     */
+     
     public NewJFrameCerrarCaja(NewJFramePrincipal principal, Caja cajaA, MySQL bd) {
         this.bd = bd;
         this.cajaActual = cajaA;
@@ -34,13 +23,12 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         setResizable(false);
         //setDefaultCloseOperation(0);//anula la CRUZ exit
         setTitle("Colibrí Arte y Cultura - Cerrar Caja");
-        
         //buscarle lugar! aca no va
+        jLabelUsuario.setText(jLabelUsuario.getText()+this.cajaActual.getUser().getUser());
         jLabelTotal.setText(jLabelTotal.getText()+this.cajaActual.getMonto().toString());
         jTextAperturaCaja.setText(this.cajaActual.getMontoApertura().toString());
         jTextAperturaCaja.setEditable(false);
-         }
-
+        }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,6 +64,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jLabelExtraProxCaja = new javax.swing.JLabel();
         jButtonConfirmar = new javax.swing.JButton();
         jTextAperturaCaja = new javax.swing.JTextField();
+        jLabelUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -251,14 +240,13 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
+        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelUsuario.setText("Usuario: ");
+
         javax.swing.GroupLayout jPanelCerrarCajaLayout = new javax.swing.GroupLayout(jPanelCerrarCaja);
         jPanelCerrarCaja.setLayout(jPanelCerrarCajaLayout);
         jPanelCerrarCajaLayout.setHorizontalGroup(
             jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(jLabelTitulo)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCerrarCajaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,9 +256,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
                             .addComponent(jScrollPaneGasto, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                             .addComponent(jTextAperturaCaja))
                         .addGap(97, 97, 97)
-                        .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelVenta)))
+                        .addComponent(jScrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
                         .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
@@ -283,54 +269,67 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
                                     .addComponent(jPasswordFieldActual, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabelTituloUsuarioA)
                             .addComponent(jLabelAperturaCaja))
-                        .addGap(164, 164, 164)
                         .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTituloUsuarioP)
                             .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
+                                .addGap(164, 164, 164)
                                 .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCerrarCajaLayout.createSequentialGroup()
-                                        .addComponent(jLabelPasswordP)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addComponent(jLabelTituloUsuarioP)
                                     .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
-                                        .addComponent(jLabelUsuarioP)
-                                        .addGap(30, 30, 30)))
-                                .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldUsuarioP)
-                                    .addComponent(jPasswordFieldUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCerrarCajaLayout.createSequentialGroup()
+                                                .addComponent(jLabelPasswordP)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
+                                                .addComponent(jLabelUsuarioP)
+                                                .addGap(30, 30, 30)))
+                                        .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldUsuarioP)
+                                            .addComponent(jPasswordFieldUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
+                                .addGap(127, 127, 127)
+                                .addComponent(jLabelVenta)))))
                 .addGap(142, 142, 142))
             .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
-                        .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCerrarCaja))
-                    .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelTotal)
-                        .addComponent(jPanelProxCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
+                                .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCerrarCaja))
+                            .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelTotal)
+                                .addComponent(jPanelProxCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(jLabelTitulo)
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabelUsuario)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelCerrarCajaLayout.setVerticalGroup(
             jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTitulo)
+                    .addComponent(jLabelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAperturaCaja)
+                    .addComponent(jLabelVenta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelVenta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPaneVenta)
                         .addGap(41, 41, 41))
                     .addGroup(jPanelCerrarCajaLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabelAperturaCaja)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextAperturaCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelGasto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneGasto)
+                        .addComponent(jScrollPaneGasto, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelTotal)
                         .addGap(24, 24, 24)))
@@ -357,7 +356,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
                             .addComponent(jPasswordFieldUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(35, 35, 35)
                 .addComponent(jPanelProxCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(jPanelCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonMenuPrincipal)
                     .addComponent(jButtonCerrarCaja))
@@ -409,7 +408,6 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
            evt.consume();
        }  
-        
         if (k == KeyEvent.VK_ENTER){
            jButtonConfirmar.doClick();
         }
@@ -500,13 +498,13 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         try{
-        String dato1 = jTextFieldRetEfectivo.getText();
-        Double dat1 = Double.parseDouble(dato1);
-        String dato2 = jTextFieldExtraProxCaja.getText();
-        Double dat2 = Double.parseDouble(dato2);
-        Double fin = this.cajaActual.getMonto() - dat1 + dat2;
-        jTextFieldProxCaja.setText(fin.toString());
-        jButtonConfirmar.setBackground(Color.green);
+            String dato1 = jTextFieldRetEfectivo.getText();
+            Double dat1 = Double.parseDouble(dato1);
+            String dato2 = jTextFieldExtraProxCaja.getText();
+            Double dat2 = Double.parseDouble(dato2);
+            Double fin = this.cajaActual.getMonto() - dat1 + dat2;
+            jTextFieldProxCaja.setText(fin.toString());
+            jButtonConfirmar.setBackground(Color.green);
        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "ERROR faltan ingresar datos");
        } 
@@ -568,6 +566,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTituloUsuarioA;
     private javax.swing.JLabel jLabelTituloUsuarioP;
     private javax.swing.JLabel jLabelTotal;
+    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelUsuarioA;
     private javax.swing.JLabel jLabelUsuarioP;
     private javax.swing.JLabel jLabelVenta;

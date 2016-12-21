@@ -48,6 +48,8 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         jTextFieldMonto = new javax.swing.JTextField();
         jButtonEgreso = new javax.swing.JButton();
         jButtonMenuPrincipal = new javax.swing.JButton();
+        jLabelProveedor = new javax.swing.JLabel();
+        jComboBoxProveedor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +94,10 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             }
         });
 
+        jLabelProveedor.setText("Proveedor: ");
+
+        jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quimica quillay", "rama", "vasco", "verduleria", "pollos", "mr pan", "huevos", "chino", "helado", "cafe bakan", "dallachiesa", "hielo 42", "la gran miga", "mauca", "mc cain", "nini", "papelera", "purre", "quilmes tolosa", "copete", "otros" }));
+
         javax.swing.GroupLayout jPanelEgresoLayout = new javax.swing.GroupLayout(jPanelEgreso);
         jPanelEgreso.setLayout(jPanelEgresoLayout);
         jPanelEgresoLayout.setHorizontalGroup(
@@ -100,30 +106,38 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescripcion)
-                    .addComponent(jLabelMonto))
+                    .addComponent(jLabelMonto)
+                    .addComponent(jLabelProveedor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                        .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 167, Short.MAX_VALUE))
-                    .addComponent(jTextFieldDescripcion)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEgresoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 45, Short.MAX_VALUE)
                         .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEgreso)))
-                .addGap(25, 25, 25))
+                        .addComponent(jButtonEgreso)
+                        .addGap(25, 25, 25))
+                    .addGroup(jPanelEgresoLayout.createSequentialGroup()
+                        .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.Alignment.LEADING, 0, 193, Short.MAX_VALUE))
+                            .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addGap(130, 130, 130)
                 .addComponent(jLabelEgreso)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelEgresoLayout.setVerticalGroup(
             jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(19, 19, 19)
                 .addComponent(jLabelEgreso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(43, 43, 43)
+                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelProveedor)
+                    .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDescripcion))
@@ -131,7 +145,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMonto)
                     .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -169,7 +183,8 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 String pago = jTextFieldMonto.getText();
                 Double egreso = Double.parseDouble(pago);
                 cajaActual.setMonto(cajaActual.getMonto() - egreso);
-                cajaActual.getEgreso().add(jTextFieldDescripcion.getText());
+                cajaActual.getEgreso().add(jComboBoxProveedor.getSelectedItem()+"#"+jTextFieldDescripcion.getText()+"#"+jTextFieldMonto.getText());
+                JOptionPane.showMessageDialog(null, " PAGO REALIZADO ");
                 jTextFieldMonto.setText("");
                 jTextFieldDescripcion.setText("");
                 
@@ -186,8 +201,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             }
             System.out.println(cajaActual.getMonto());
             
-            //mensaje operacion exitosa
-            JOptionPane.showMessageDialog(null, " PAGO REALIZADO ", "Pagos / Egresos", JOptionPane.WARNING_MESSAGE);
+            
             
        }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO EN EL INGRESO DE DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -270,9 +284,11 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEgreso;
     private javax.swing.JButton jButtonMenuPrincipal;
+    private javax.swing.JComboBox<String> jComboBoxProveedor;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelEgreso;
     private javax.swing.JLabel jLabelMonto;
+    private javax.swing.JLabel jLabelProveedor;
     private javax.swing.JPanel jPanelEgreso;
     private javax.swing.JTextField jTextFieldDescripcion;
     private javax.swing.JTextField jTextFieldMonto;

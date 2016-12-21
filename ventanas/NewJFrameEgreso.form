@@ -46,41 +46,52 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelDescripcion" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelMonto" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelProveedor" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jTextFieldMonto" min="-2" pref="111" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="167" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="jTextFieldDescripcion" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
                           <Component id="jButtonMenuPrincipal" min="-2" pref="134" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonEgreso" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jTextFieldDescripcion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxProveedor" alignment="0" pref="193" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jTextFieldMonto" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                   <Component id="jLabelEgreso" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="jLabelEgreso" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextFieldDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -90,7 +101,7 @@
                       <Component id="jLabelMonto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldMonto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButtonEgreso" max="32767" attributes="0"/>
                       <Component id="jButtonMenuPrincipal" max="32767" attributes="0"/>
@@ -145,6 +156,43 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMenuPrincipalActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelProveedor">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Proveedor: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxProveedor">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="21">
+                <StringItem index="0" value="Quimica quillay"/>
+                <StringItem index="1" value="rama"/>
+                <StringItem index="2" value="vasco"/>
+                <StringItem index="3" value="verduleria"/>
+                <StringItem index="4" value="pollos"/>
+                <StringItem index="5" value="mr pan"/>
+                <StringItem index="6" value="huevos"/>
+                <StringItem index="7" value="chino"/>
+                <StringItem index="8" value="helado"/>
+                <StringItem index="9" value="cafe bakan"/>
+                <StringItem index="10" value="dallachiesa"/>
+                <StringItem index="11" value="hielo 42"/>
+                <StringItem index="12" value="la gran miga"/>
+                <StringItem index="13" value="mauca"/>
+                <StringItem index="14" value="mc cain"/>
+                <StringItem index="15" value="nini"/>
+                <StringItem index="16" value="papelera"/>
+                <StringItem index="17" value="purre"/>
+                <StringItem index="18" value="quilmes tolosa"/>
+                <StringItem index="19" value="copete"/>
+                <StringItem index="20" value="otros"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

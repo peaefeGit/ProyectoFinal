@@ -225,7 +225,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDescripcionActionPerformed
 
     private void jButtonMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMovimientoActionPerformed
-   try{ 
+         try{ 
             // falta la parte de la validacion de usuario
                 int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
                 if (eleccion == JOptionPane.YES_OPTION){
@@ -235,15 +235,18 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                          Double mov = Double.parseDouble(movStr);
                          if (jRadioButtonDeposito.isSelected()){
                             cajaActual.setMonto(cajaActual.getMonto() + mov);
-                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText());
+                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"##"+jTextFieldUsuario.getText());
                         }
                          if (jRadioButtonExtraccion.isSelected()){
                             cajaActual.setMonto(cajaActual.getMonto() - mov);
-                            cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText());
+                            cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
+                                    + "#"+jTextFieldUsuario.getText());
                         } 
                         JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
                         jTextFieldMonto.setText("");
                         jTextFieldDescripcion.setText("");
+                        jTextFieldUsuario.setText("");
+                        jPasswordField.setText("");
                     }else{
                         JOptionPane.showMessageDialog(null, "Error en el ingreso de datos del usuario");
                     }
@@ -263,7 +266,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
             
             //mensaje operacion exitosa
                      
-       }catch (NumberFormatException e){
+        }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO EN EL INGRESO DE DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
        
