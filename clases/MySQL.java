@@ -64,7 +64,7 @@ public class MySQL {
     *  Devuelve True si los parametros coinciden con algun valor de la Base de Datos
     */
     public Boolean validarLogin(JPasswordField pass, JTextField user ){
-           
+          
         try {
             
             String Query = "SELECT * FROM usuarios";
@@ -77,7 +77,7 @@ public class MySQL {
                  
                        ok = true;                     
                 }                
-            }                       
+            }                      
              return ok;             
             
             
@@ -165,8 +165,29 @@ public class MySQL {
              list.setModel(model);        
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos");            
-        }        
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos");           
+        }
+        
+        
+    }
+    
+    public Producto getProducto(String nombre) {
+        try {
+            String Query = "SELECT * from productos WHERE nombre = '"+nombre+"'";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            rs.next();
+            Producto p = new Producto(rs.getInt("idProducto"),
+                    rs.getInt("categoria"),
+                    rs.getString("nombre"),
+                    rs.getFloat("precio"));
+            return p;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "algun error"+e);
+            return null;
+        }
+        
     }
     
      public void guardarCuenta(Cuenta c){
