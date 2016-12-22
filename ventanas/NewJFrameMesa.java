@@ -48,6 +48,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         //llena lista base datos
         db.llenarJlist(jListPlato);
         
+        //jTextFieldTotal.setEditable(false);
+        
     }
 
 
@@ -584,7 +586,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
         
         int i = jTableCuenta.getSelectedRow();
+        
         DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+        total = total - (float) jTableCuenta.getValueAt(i, 2);
+        jTextFieldTotal.setText(total.toString());
         model.removeRow(i);
         
         
