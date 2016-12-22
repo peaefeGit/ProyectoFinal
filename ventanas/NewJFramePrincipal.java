@@ -24,7 +24,6 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
     private Hashtable<JButton, NewJFrameMesa> mesas;
     private MySQL db;
     private Caja cajaActual;
-    private String prueba;
     
     public NewJFramePrincipal(MySQL db, Caja cajaA) {
         this.cajaActual = cajaA;

@@ -65,6 +65,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
 
         jLabelPassword.setText("Contraseña: ");
 
+        jTextFieldUsuario.setText("pedrofava");
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -88,12 +89,14 @@ public class NewJFrameLogin extends javax.swing.JFrame {
 
         jLabelMontoApertura.setText("Monto apertura: ");
 
+        jTextFieldMontoApertura.setText("5000");
         jTextFieldMontoApertura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldMontoAperturaKeyTyped(evt);
             }
         });
 
+        jPasswordField.setText("123456");
         jPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldActionPerformed(evt);
