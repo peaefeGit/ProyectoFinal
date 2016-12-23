@@ -6,8 +6,10 @@
 package ventanas;
 
 import clases.Caja;
+import clases.Movimiento;
 import clases.MySQL;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 
@@ -16,14 +18,15 @@ import javax.swing.JOptionPane;
  * @author hp desktop
  */
 public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
-    private MySQL bd;
+    private MySQL db;
     private NewJFramePrincipal principal;
     private Caja cajaActual;
+    private Movimiento m;
     /**
      * Creates new form NewJFrameMovimientoCaja
      */
     public NewJFrameMovimientoCaja(NewJFramePrincipal principal, Caja cajaA, MySQL bd) {
-        this.bd= bd;
+        this.db= bd;
         this.cajaActual = cajaA;
         this.principal = principal;
         initComponents();
@@ -45,6 +48,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
 
         buttonGroupMovimiento = new javax.swing.ButtonGroup();
         jPanelMovCaja = new javax.swing.JPanel();
+        jLabelTitulo = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
         jTextFieldDescripcion = new javax.swing.JTextField();
         jLabelMonto = new javax.swing.JLabel();
@@ -57,19 +61,16 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         jButtonMenuPrincipal = new javax.swing.JButton();
         jRadioButtonDeposito = new javax.swing.JRadioButton();
         jRadioButtonExtraccion = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelMovCaja.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMovCaja.setBackground(new java.awt.Color(109, 176, 248));
         jPanelMovCaja.setForeground(new java.awt.Color(109, 176, 248));
-        jPanelMovCaja.setLayout(null);
 
-        jLabelDescripcion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelTitulo.setText("Movimiento de Caja");
+
         jLabelDescripcion.setText("Descripcion del movimiento");
-        jPanelMovCaja.add(jLabelDescripcion);
-        jLabelDescripcion.setBounds(10, 75, 156, 14);
 
         jTextFieldDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,22 +82,14 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jTextFieldDescripcionKeyTyped(evt);
             }
         });
-        jPanelMovCaja.add(jTextFieldDescripcion);
-        jTextFieldDescripcion.setBounds(181, 72, 230, 20);
 
-        jLabelMonto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelMonto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMonto.setText("Monto        $");
-        jPanelMovCaja.add(jLabelMonto);
-        jLabelMonto.setBounds(30, 130, 67, 20);
 
         jTextFieldMonto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldMontoKeyTyped(evt);
             }
         });
-        jPanelMovCaja.add(jTextFieldMonto);
-        jTextFieldMonto.setBounds(100, 130, 171, 20);
 
         jButtonMovimiento.setText("Realizar Movimiento");
         jButtonMovimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -104,36 +97,22 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jButtonMovimientoActionPerformed(evt);
             }
         });
-        jPanelMovCaja.add(jButtonMovimiento);
-        jButtonMovimiento.setBounds(240, 240, 170, 23);
 
-        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setText("Usuario");
-        jPanelMovCaja.add(jLabelUsuario);
-        jLabelUsuario.setBounds(50, 160, 50, 20);
 
         jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldUsuarioKeyTyped(evt);
             }
         });
-        jPanelMovCaja.add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(100, 160, 171, 20);
 
-        jLabelPassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelPassword.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPassword.setText("Contraseña");
-        jPanelMovCaja.add(jLabelPassword);
-        jLabelPassword.setBounds(30, 190, 80, 20);
 
         jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jPasswordFieldKeyTyped(evt);
             }
         });
-        jPanelMovCaja.add(jPasswordField);
-        jPasswordField.setBounds(100, 190, 171, 20);
 
         jButtonMenuPrincipal.setText("Menu Principal");
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -141,133 +120,217 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jButtonMenuPrincipalActionPerformed(evt);
             }
         });
-        jPanelMovCaja.add(jButtonMenuPrincipal);
-        jButtonMenuPrincipal.setBounds(90, 240, 144, 23);
 
-        jRadioButtonDeposito.setBackground(new java.awt.Color(79, 60, 60));
+        jRadioButtonDeposito.setBackground(new java.awt.Color(109, 176, 248));
         buttonGroupMovimiento.add(jRadioButtonDeposito);
-        jRadioButtonDeposito.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonDeposito.setText("Depósito");
-        jPanelMovCaja.add(jRadioButtonDeposito);
-        jRadioButtonDeposito.setBounds(16, 99, 90, 23);
 
-        jRadioButtonExtraccion.setBackground(new java.awt.Color(79, 60, 60));
+        jRadioButtonExtraccion.setBackground(new java.awt.Color(109, 176, 248));
         buttonGroupMovimiento.add(jRadioButtonExtraccion);
-        jRadioButtonExtraccion.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonExtraccion.setText("Extracción");
-        jPanelMovCaja.add(jRadioButtonExtraccion);
-        jRadioButtonExtraccion.setBounds(130, 100, 90, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/movimientodecaja3.png"))); // NOI18N
-        jPanelMovCaja.add(jLabel1);
-        jLabel1.setBounds(0, 0, 420, 310);
+        javax.swing.GroupLayout jPanelMovCajaLayout = new javax.swing.GroupLayout(jPanelMovCaja);
+        jPanelMovCaja.setLayout(jPanelMovCajaLayout);
+        jPanelMovCajaLayout.setHorizontalGroup(
+            jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMovCajaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMovimiento))
+                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                        .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                        .addComponent(jLabelDescripcion)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabelMonto)
+                                                    .addComponent(jLabelUsuario))
+                                                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                                .addComponent(jLabelPassword)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                                .addComponent(jRadioButtonDeposito)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jRadioButtonExtraccion))))))
+                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(jLabelTitulo)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelMovCajaLayout.setVerticalGroup(
+            jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabelTitulo)
+                .addGap(35, 35, 35)
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDescripcion)
+                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonDeposito)
+                    .addComponent(jRadioButtonExtraccion))
+                .addGap(7, 7, 7)
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMonto)
+                    .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUsuario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPassword)
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMovimiento)
+                    .addComponent(jButtonMenuPrincipal))
+                .addGap(42, 42, 42))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuPrincipalActionPerformed
-        this.principal.setVisible(true);
-        dispose();
+    private void jTextFieldDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescripcionActionPerformed
 
+    private void jButtonMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMovimientoActionPerformed
+         try{ 
+            // falta la parte de la validacion de usuario
+                int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
+                if (eleccion == JOptionPane.YES_OPTION){
+                    boolean actual = this.db.validarLogin(jPasswordField, jTextFieldUsuario);
+                    if (actual){  
+                         String movStr = jTextFieldMonto.getText();
+                         Double mov = Double.parseDouble(movStr);
+                         Date d = new Date();
+                         java.sql.Date fecha = new java.sql.Date(d.getTime());
+                         if (jRadioButtonDeposito.isSelected()){
+                            cajaActual.setMonto(cajaActual.getMonto() + mov);
+                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"##"+jTextFieldUsuario.getText());
+                            JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
+                             jTextFieldMonto.setText("");
+                             jTextFieldDescripcion.setText("");
+                             jTextFieldUsuario.setText("");
+                             jPasswordField.setText(""); 
+                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Deposito");
+                             db.guardarMovimiento(m);
+                             
+                        }   else if (jRadioButtonExtraccion.isSelected()){
+                            cajaActual.setMonto(cajaActual.getMonto() - mov);
+                            cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
+                                    + "#"+jTextFieldUsuario.getText());
+                            JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
+                             jTextFieldMonto.setText("");
+                             jTextFieldDescripcion.setText("");
+                             jTextFieldUsuario.setText("");
+                             jPasswordField.setText("");
+                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Extraccion");
+                             db.guardarMovimiento(m);
+                        } else {
+                             JOptionPane.showMessageDialog(null, " Debes seleccionar entre Extraccion o Deposito antes de realizar el movimiento ");
+                        }
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error en el ingreso de datos del usuario");
+                    }
+                }else if (eleccion == JOptionPane.CANCEL_OPTION){
+                
+                }else if (eleccion == JOptionPane.CLOSED_OPTION){
+           
+                } 
+            
+            //prueba en consola
+            Iterator<String> itr = this.cajaActual.getMovimiento().iterator();
+            while (itr.hasNext()) {
+               String element = itr.next();
+               System.out.println(element);
+            }
+            System.out.println(cajaActual.getMonto());
+            
+            //mensaje operacion exitosa
+                     
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO EN EL INGRESO DE DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+       
+       
+    }//GEN-LAST:event_jButtonMovimientoActionPerformed
+
+    private void jButtonMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuPrincipalActionPerformed
+       this.principal.setVisible(true);
+       dispose();
+       
     }//GEN-LAST:event_jButtonMenuPrincipalActionPerformed
 
-    private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
-        presEnterMovimientoCaja(evt);
-    }//GEN-LAST:event_jPasswordFieldKeyTyped
+    private void jTextFieldMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMontoKeyTyped
+       //no deja escribir letras , solamente un solo punto, unicamente deja escribir numeros!
+       int k = evt.getKeyChar();
+       if ((k >= 46) && (k<= 57) ){
+          if (k == 46){
+             String dato =  jTextFieldMonto.getText();
+             int tam = dato.length();
+             for (int i=0; i<=tam; i++){
+                 if(dato.contains("."))
+                     evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+                 
+                 
+             }
+          }if (k == 47){
+              evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+          } 
+       }else{
+           evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+           evt.consume();
+       }if (k == KeyEvent.VK_ENTER){
+           jButtonMovimiento.doClick();
+       }
+    }//GEN-LAST:event_jTextFieldMontoKeyTyped
+
+    private void jTextFieldDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionKeyTyped
+       presEnterMovimientoCaja(evt);
+    }//GEN-LAST:event_jTextFieldDescripcionKeyTyped
 
     private void jTextFieldUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioKeyTyped
         presEnterMovimientoCaja(evt);
     }//GEN-LAST:event_jTextFieldUsuarioKeyTyped
 
-    private void jButtonMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMovimientoActionPerformed
-        try{
-            // falta la parte de la validacion de usuario
-            int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
-            if (eleccion == JOptionPane.YES_OPTION){
-                boolean actual = this.bd.validarLogin(jPasswordField, jTextFieldUsuario);
-                if (actual){
-                    String movStr = jTextFieldMonto.getText();
-                    Double mov = Double.parseDouble(movStr);
-                    if (jRadioButtonDeposito.isSelected()){
-                        cajaActual.setMonto(cajaActual.getMonto() + mov);
-                        cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"##"+jTextFieldUsuario.getText());
-                    }
-                    if (jRadioButtonExtraccion.isSelected()){
-                        cajaActual.setMonto(cajaActual.getMonto() - mov);
-                        cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
-                            + "#"+jTextFieldUsuario.getText());
-                    }
-                    JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
-                    jTextFieldMonto.setText("");
-                    jTextFieldDescripcion.setText("");
-                    jTextFieldUsuario.setText("");
-                    jPasswordField.setText("");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Error en el ingreso de datos del usuario");
-                }
-            }else if (eleccion == JOptionPane.CANCEL_OPTION){
-
-            }else if (eleccion == JOptionPane.CLOSED_OPTION){
-
-            }
-
-            //prueba en consola
-            Iterator<String> itr = this.cajaActual.getMovimiento().iterator();
-            while (itr.hasNext()) {
-                String element = itr.next();
-                System.out.println(element);
-            }
-            System.out.println(cajaActual.getMonto());
-
-            //mensaje operacion exitosa
-
-        }catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO EN EL INGRESO DE DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-
-    }//GEN-LAST:event_jButtonMovimientoActionPerformed
-
-    private void jTextFieldMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMontoKeyTyped
-        //no deja escribir letras , solamente un solo punto, unicamente deja escribir numeros!
-        int k = evt.getKeyChar();
-        if ((k >= 46) && (k<= 57) ){
-            if (k == 46){
-                String dato =  jTextFieldMonto.getText();
-                int tam = dato.length();
-                for (int i=0; i<=tam; i++){
-                    if(dato.contains("."))
-                    evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-
-                }
-            }if (k == 47){
-                evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-            }
-        }else{
-            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-            evt.consume();
-        }if (k == KeyEvent.VK_ENTER){
-            jButtonMovimiento.doClick();
-        }
-    }//GEN-LAST:event_jTextFieldMontoKeyTyped
-
-    private void jTextFieldDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionKeyTyped
+    private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
         presEnterMovimientoCaja(evt);
-    }//GEN-LAST:event_jTextFieldDescripcionKeyTyped
-
-    private void jTextFieldDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDescripcionActionPerformed
+    }//GEN-LAST:event_jPasswordFieldKeyTyped
     public void presEnterMovimientoCaja (java.awt.event.KeyEvent evt){
         char teclaPres = evt.getKeyChar();
         if (teclaPres == KeyEvent.VK_ENTER){
@@ -313,10 +376,10 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupMovimiento;
     private javax.swing.JButton jButtonMenuPrincipal;
     private javax.swing.JButton jButtonMovimiento;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelMonto;
     private javax.swing.JLabel jLabelPassword;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelMovCaja;
     private javax.swing.JPasswordField jPasswordField;

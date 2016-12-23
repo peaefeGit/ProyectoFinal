@@ -214,6 +214,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonCerrarCuentaMouseEntered(evt);
             }
         });
+        jButtonCerrarCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarCuentaActionPerformed(evt);
+            }
+        });
         jPanelCuenta.add(jButtonCerrarCuenta);
         jButtonCerrarCuenta.setBounds(310, 230, 120, 80);
 
@@ -626,6 +631,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jTextFieldTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTotalActionPerformed
+
+    private void jButtonCerrarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaActionPerformed
+            
+    }//GEN-LAST:event_jButtonCerrarCuentaActionPerformed
 
     /**
      * @param args the command line arguments
