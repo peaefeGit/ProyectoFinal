@@ -7,9 +7,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 import ventanas.NewJFrameLogin;
 import oracle.jrockit.jfr.JFR;
+import sun.rmi.runtime.Log;
 
 public class Main {
 
@@ -19,15 +22,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         
-        MySQL db = new MySQL();
-
-              
-
-        db.MySQLConnection("root", "", "/proyecto_colibri");
-        //db.getAll("productos");
+        MySQL db = new MySQL(); 
+        db.MySQLConnection("root", "", "/proyecto_colibri");       
 
         NewJFrameLogin ventana = new NewJFrameLogin(db);
         ventana.show();
+        
+        
         
         /*ArrayList<String> prods = db.getAll("productos");
         

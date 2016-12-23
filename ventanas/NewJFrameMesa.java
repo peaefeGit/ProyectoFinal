@@ -6,10 +6,12 @@
 package ventanas;
 
 import clases.Caja;
+import clases.Cuenta;
 import clases.MySQL;
 import clases.Producto;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,6 +32,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private Caja cajaActual;
     private String ultimoBoton = "prueba";
     private Double total;
+    private Cuenta cuenta;
+    
     //traje la caja hasta aca solamente. falta sumar precios de productos en la cuenta
     
     public NewJFrameMesa(NewJFramePrincipal principal, MySQL db, JButton btn, Caja cajaA) {
@@ -39,6 +43,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         this.principal = principal;
         
         this.total = 0.0;
+        this.cuenta = cuenta;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -52,6 +57,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonDescuento.setContentAreaFilled(false);
         jButtonDescuento.setBorderPainted(false);
         
+<<<<<<< HEAD
         jButtonBorrar.setContentAreaFilled(false);
         jButtonBorrar.setBorderPainted(false);
         
@@ -69,6 +75,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         
         jButtonMenuPrincipal.setContentAreaFilled(false);
         jButtonMenuPrincipal.setBorderPainted(false);
+=======
+        //jTextFieldTotal.setEditable(false);
+        
+>>>>>>> 931053d2b60b21d1bddea3fcb13b702bf7492dc3
     }
     
 
@@ -487,6 +497,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonCerrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseClicked
        int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
+           Date fecha = new Date();
+           java.sql.Date fechasql = new java.sql.Date(fecha.getTime());
+           Cuenta c = new Cuenta(total, fechasql,"");
+           db.guardarCuenta(c);
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);
@@ -532,7 +546,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
         
         int i = jTableCuenta.getSelectedRow();
+        
         DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+        total = total - (float) jTableCuenta.getValueAt(i, 2);
+        jTextFieldTotal.setText(total.toString());
         model.removeRow(i);
         
         
@@ -546,6 +563,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarCuentaMouseClicked
        int eleccion = JOptionPane.showConfirmDialog(null,"¿ DESEA ELIMINAR LA CUENTA ? ", " BORRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
+          
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);

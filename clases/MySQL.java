@@ -190,5 +190,12 @@ public class MySQL {
         
     }
     
-   
+     public void guardarCuenta(Cuenta c){
+       try{  
+            Statement stmt = Conexion.createStatement();
+            stmt.executeUpdate("INSERT INTO ventas(fecha, monto, descripcion)"+"VALUES ('"+c.getFecha()+"','"+c.getMonto()+"','"+c.getDescripcion()+"')");
+      } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+      }
+    }
 }

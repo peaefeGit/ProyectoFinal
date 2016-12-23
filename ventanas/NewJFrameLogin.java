@@ -74,6 +74,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         jPanelLogin.add(jLabelPassword);
         jLabelPassword.setBounds(13, 100, 80, 14);
 
+        jTextFieldUsuario.setText("pedrofava");
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -102,6 +103,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         jPanelLogin.add(jLabelMontoApertura);
         jLabelMontoApertura.setBounds(12, 130, 100, 14);
 
+        jTextFieldMontoApertura.setText("5000");
         jTextFieldMontoApertura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldMontoAperturaKeyTyped(evt);
@@ -110,6 +112,7 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         jPanelLogin.add(jTextFieldMontoApertura);
         jTextFieldMontoApertura.setBounds(110, 130, 136, 20);
 
+        jPasswordField.setText("123456");
         jPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldActionPerformed(evt);
