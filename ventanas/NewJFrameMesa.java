@@ -167,6 +167,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTotal.setText("TOTAL: $ ");
 
+        jTableCuenta = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jTableCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -175,6 +180,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 "Producto", "Cantidad", "Precio"
             }
         ));
+        jTableCuenta.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableCuenta);
 
         jTextFieldTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -334,6 +340,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonHamburgesa.setText("Hamburgesa");
         jButtonHamburgesa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonHamburgesa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonHamburgesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHamburgesaActionPerformed(evt);
+            }
+        });
 
         jButtonFritas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonFritas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fritas.jpg"))); // NOI18N
@@ -374,6 +385,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonMilanesas.setText("Milanesas");
         jButtonMilanesas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonMilanesas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonMilanesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMilanesasActionPerformed(evt);
+            }
+        });
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonPiza.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -570,7 +586,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMesaMouseClicked
 
     private void jButtonPlatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlatoMouseClicked
-        String opcion = jListPlato.getSelectedValue();
+        /*String opcion = jListPlato.getSelectedValue();
         //System.out.println(opcion);
         Producto p = db.getProducto(opcion);
         total = total + p.getPrecio();
@@ -583,7 +599,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         row[1] =  1;
         row[2] =  p.getPrecio();
         model.addRow(row);
-        jTableCuenta.setModel(model);
+        jTableCuenta.setModel(model); */
         //float precio = db.getPrecioProd(opcion);
         //DefaultListModel  modelo = (DefaultListModel) jListCuenta.getModel();
         //modelo.addElement(precio);
@@ -687,12 +703,35 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPlatoKeyReleased
 
     private void jButtonPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlatoActionPerformed
-        // TODO add your handling code here:
+       String opcion = jListPlato.getSelectedValue();
+        //System.out.println(opcion);
+        Producto p = db.getProducto(opcion);
+        total = total + p.getPrecio();
+        jTextFieldTotal.setText(total.toString() );
+        //System.out.println(p.toString());
+        
+        DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+        Object[] row = new Object[3];
+        row[0] = p.getNombre();
+        row[1] =  1;
+        row[2] =  p.getPrecio();
+        model.addRow(row);
+        jTableCuenta.setModel(model);
     }//GEN-LAST:event_jButtonPlatoActionPerformed
 
     private void jTextFieldTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTotalActionPerformed
+
+    private void jButtonHamburgesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHamburgesaActionPerformed
+        db.buscarPorCategoria(jListPlato, jButtonHamburgesa.getText());
+        ultimoBoton = jButtonHamburgesa.getText();
+    }//GEN-LAST:event_jButtonHamburgesaActionPerformed
+
+    private void jButtonMilanesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMilanesasActionPerformed
+        db.buscarPorCategoria(jListPlato, jButtonMilanesas.getText());
+        ultimoBoton = jButtonMilanesas.getText();
+    }//GEN-LAST:event_jButtonMilanesasActionPerformed
 
     /**
      * @param args the command line arguments
