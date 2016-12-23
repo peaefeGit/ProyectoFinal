@@ -6,12 +6,10 @@
 package ventanas;
 
 import clases.Caja;
-import clases.Cuenta;
 import clases.MySQL;
 import clases.Producto;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,8 +30,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private Caja cajaActual;
     private String ultimoBoton = "prueba";
     private Double total;
-    private Cuenta cuenta;
-    
     //traje la caja hasta aca solamente. falta sumar precios de productos en la cuenta
     
     public NewJFrameMesa(NewJFramePrincipal principal, MySQL db, JButton btn, Caja cajaA) {
@@ -43,7 +39,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         this.principal = principal;
         
         this.total = 0.0;
-        this.cuenta = cuenta;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -57,7 +52,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonDescuento.setContentAreaFilled(false);
         jButtonDescuento.setBorderPainted(false);
         
-<<<<<<< HEAD
         jButtonBorrar.setContentAreaFilled(false);
         jButtonBorrar.setBorderPainted(false);
         
@@ -75,10 +69,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         
         jButtonMenuPrincipal.setContentAreaFilled(false);
         jButtonMenuPrincipal.setBorderPainted(false);
-=======
-        //jTextFieldTotal.setEditable(false);
-        
->>>>>>> 931053d2b60b21d1bddea3fcb13b702bf7492dc3
     }
     
 
@@ -237,11 +227,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jPanelCuenta.add(jLabelTotal);
         jLabelTotal.setBounds(10, 263, 52, 14);
 
-        jTableCuenta = new javax.swing.JTable(){
-            public boolean isCellEditable(int row, int column){
-                return false;
-            }
-        };
         jTableCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -250,7 +235,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 "Producto", "Cantidad", "Precio"
             }
         ));
-        jTableCuenta.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableCuenta);
 
         jPanelCuenta.add(jScrollPane1);
@@ -406,16 +390,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonHamburgesa.setText("Hamburgesa");
         jButtonHamburgesa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonHamburgesa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-<<<<<<< HEAD
-        jButtonHamburgesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHamburgesaActionPerformed(evt);
-            }
-        });
-=======
         jPanelMesa.add(jButtonHamburgesa);
         jButtonHamburgesa.setBounds(127, 177, 112, 77);
->>>>>>> 09e42f9dd489cb0b66d38d381b30ebfe4328dc19
 
         jButtonFritas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonFritas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fritas.jpg"))); // NOI18N
@@ -462,16 +438,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonMilanesas.setText("Milanesas");
         jButtonMilanesas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonMilanesas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-<<<<<<< HEAD
-        jButtonMilanesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMilanesasActionPerformed(evt);
-            }
-        });
-=======
         jPanelMesa.add(jButtonMilanesas);
         jButtonMilanesas.setBounds(10, 260, 110, 77);
->>>>>>> 09e42f9dd489cb0b66d38d381b30ebfe4328dc19
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonPiza.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -519,10 +487,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonCerrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseClicked
        int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
-           Date fecha = new Date();
-           java.sql.Date fechasql = new java.sql.Date(fecha.getTime());
-           Cuenta c = new Cuenta(total, fechasql,"");
-           db.guardarCuenta(c);
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);
@@ -543,7 +507,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMesaMouseClicked
 
     private void jButtonPlatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlatoMouseClicked
-        /*String opcion = jListPlato.getSelectedValue();
+        String opcion = jListPlato.getSelectedValue();
         //System.out.println(opcion);
         Producto p = db.getProducto(opcion);
         total = total + p.getPrecio();
@@ -556,7 +520,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         row[1] =  1;
         row[2] =  p.getPrecio();
         model.addRow(row);
-        jTableCuenta.setModel(model); */
+        jTableCuenta.setModel(model);
         //float precio = db.getPrecioProd(opcion);
         //DefaultListModel  modelo = (DefaultListModel) jListCuenta.getModel();
         //modelo.addElement(precio);
@@ -568,10 +532,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
         
         int i = jTableCuenta.getSelectedRow();
-        
         DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
-        total = total - (float) jTableCuenta.getValueAt(i, 2);
-        jTextFieldTotal.setText(total.toString());
         model.removeRow(i);
         
         
@@ -585,7 +546,6 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarCuentaMouseClicked
        int eleccion = JOptionPane.showConfirmDialog(null,"¿ DESEA ELIMINAR LA CUENTA ? ", " BORRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
-          
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);
@@ -660,35 +620,12 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPlatoKeyReleased
 
     private void jButtonPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlatoActionPerformed
-       String opcion = jListPlato.getSelectedValue();
-        //System.out.println(opcion);
-        Producto p = db.getProducto(opcion);
-        total = total + p.getPrecio();
-        jTextFieldTotal.setText(total.toString() );
-        //System.out.println(p.toString());
-        
-        DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
-        Object[] row = new Object[3];
-        row[0] = p.getNombre();
-        row[1] =  1;
-        row[2] =  p.getPrecio();
-        model.addRow(row);
-        jTableCuenta.setModel(model);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonPlatoActionPerformed
 
     private void jTextFieldTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTotalActionPerformed
-
-    private void jButtonHamburgesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHamburgesaActionPerformed
-        db.buscarPorCategoria(jListPlato, jButtonHamburgesa.getText());
-        ultimoBoton = jButtonHamburgesa.getText();
-    }//GEN-LAST:event_jButtonHamburgesaActionPerformed
-
-    private void jButtonMilanesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMilanesasActionPerformed
-        db.buscarPorCategoria(jListPlato, jButtonMilanesas.getText());
-        ultimoBoton = jButtonMilanesas.getText();
-    }//GEN-LAST:event_jButtonMilanesasActionPerformed
 
     /**
      * @param args the command line arguments
