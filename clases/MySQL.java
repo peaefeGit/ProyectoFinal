@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 
 public class MySQL {
@@ -91,6 +93,7 @@ public class MySQL {
     /*
     * Llena una lista con los productos cuyo nombre contenga un String que viene por parametro.
     */
+    
     public void buscarPlatos(JList list, String nombre, String categoria){
         DefaultListModel model = new DefaultListModel();
         try {            
@@ -101,20 +104,34 @@ public class MySQL {
                 String itemCode = rs.getString("nombre");
                 model.addElement(itemCode);               
             }
-             list.setModel(model);        
-            
+             list.setModel(model);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error en la adquisicion de datos");            
         }        
     }
-    
+    /*public void buscarPlatos(JTable tabla, String nombre){
+        DefaultTableModel model = new DefaultTableModel();
+        try {            
+            String Query = "SELECT * FROM productos WHERE nombre LIKE '"+nombre+"%'"  ;
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);            
+            while (rs.next()) {
+                String itemCode = rs.getString("nombre");
+                model.addElement(itemCode);               
+            }
+             list.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos");            
+        }        
+    }*/
     
     
     /*
     *  Llena una lista con todos los productos de la base de datos.
     */    
     
-    public void llenarJlist(JList list){
+    
+    public void llenarJlist(JList list){ 
         DefaultListModel model = new DefaultListModel();
         try {
             String Query = "SELECT * FROM productos";
@@ -127,12 +144,40 @@ public class MySQL {
                 
             }
             list.setModel(model);
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos");
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
 
         }
         
+    }
+    
+    /*
+    *  Llena una jTable con todos los productos de la base de datos  | nombre | precio |
+    */ 
+    
+    public void llenarJtable (JTable tabla) {
+        try {
+            String Query = "SELECT * FROM productos";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            Object[] row = new Object[2];
+           
+            while (rs.next()) {
+                row[0] = rs.getString("nombre");
+                row[1] = rs.getFloat("precio");
+                
+                model.addRow(row);
+                
+            }
+            
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+
+        } 
     }
     
     public Float getPrecioProd(String nombre) {
@@ -167,8 +212,6 @@ public class MySQL {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error en la adquisicion de datos");           
         }
-        
-        
     }
     
     public Producto getProducto(String nombre) {
@@ -197,5 +240,15 @@ public class MySQL {
       } catch (Exception e) {
           JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
       }
+    }
+     
+    public void updateProducto(Producto p){
+        try {
+             Statement stmt = Conexion.createStatement();
+             stmt.executeUpdate("UPDATE productos SET precio = '"+p.getPrecio()+"' WHERE idProducto = '"+p.getIdProducto()+"'");
+             
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+        }
     }
 }
