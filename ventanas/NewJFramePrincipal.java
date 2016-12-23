@@ -780,7 +780,7 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVerCajaMouseClicked
 
     private void jButtonEgresosPagosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEgresosPagosMouseClicked
-        NewJFrameEgreso cc = new NewJFrameEgreso(this, this.cajaActual);
+        NewJFrameEgreso cc = new NewJFrameEgreso(this, this.cajaActual, db);
        cc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonEgresosPagosMouseClicked

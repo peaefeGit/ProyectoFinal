@@ -6,7 +6,10 @@
 package ventanas;
 
 import clases.Caja;
+import clases.Movimiento;
+import clases.MySQL;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -17,13 +20,16 @@ import javax.swing.JOptionPane;
 public class NewJFrameEgreso extends javax.swing.JFrame {
     private NewJFramePrincipal principal;
     private Caja cajaActual;
+    private Movimiento m;
+    private MySQL db;
 
     /**
      * Creates new form NewJFrameEgreso
      */
-    public NewJFrameEgreso(NewJFramePrincipal principal, Caja cajaA) {
+    public NewJFrameEgreso(NewJFramePrincipal principal, Caja cajaA, MySQL db) {
         this.cajaActual = cajaA;
         this.principal = principal;
+        this.db = db;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -142,14 +148,25 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuPrincipalActionPerformed
 
     private void jButtonEgresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEgresoActionPerformed
+<<<<<<< Updated upstream
         // generar PAGO!
         try{
+=======
+       // generar PAGO!
+       try{
+            System.out.println(cajaActual.getUser().getUser());
+>>>>>>> Stashed changes
             int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL PAGO ? ", "Pago / Egreso ", JOptionPane.WARNING_MESSAGE);
+            Date d = new Date();
+            java.sql.Date fecha = new java.sql.Date(d.getTime());
+            
             if (eleccion == JOptionPane.YES_OPTION){
                 String pago = jTextFieldMonto.getText();
                 Double egreso = Double.parseDouble(pago);
                 cajaActual.setMonto(cajaActual.getMonto() - egreso);
-                cajaActual.getEgreso().add(jComboBoxProveedor.getSelectedItem()+"#"+jTextFieldDescripcion.getText()+"#"+jTextFieldMonto.getText());
+                cajaActual.getEgreso().add(jComboBoxProveedor.getSelectedItem()+"#"+jTextFieldDescripcion.getText()+"#"+jTextFieldMonto.getText());                
+                m = new Movimiento(egreso, cajaActual.getUser().getUser(), jTextFieldDescripcion.getText(), fecha, jComboBoxProveedor.getSelectedItem().toString(), "Extraccion");
+                db.guardarMovimiento(m);
                 JOptionPane.showMessageDialog(null, " PAGO REALIZADO ");
                 jTextFieldMonto.setText("");
                 jTextFieldDescripcion.setText("");
@@ -241,7 +258,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrameEgreso(null, null).setVisible(true);
+                new NewJFrameEgreso(null, null, null).setVisible(true);
             }
         });
     }

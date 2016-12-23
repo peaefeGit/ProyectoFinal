@@ -196,6 +196,19 @@ public class MySQL {
             stmt.executeUpdate("INSERT INTO ventas(fecha, monto, descripcion)"+"VALUES ('"+c.getFecha()+"','"+c.getMonto()+"','"+c.getDescripcion()+"')");
       } catch (Exception e) {
           JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
-      }
+      }      
+       
     }
+    
+     public void guardarMovimiento(Movimiento m){
+         try{
+             
+            Statement stmt = Conexion.createStatement();
+            stmt.executeUpdate("INSERT INTO movimientos(monto, responsable, descripcion, fecha, proveedor, tipo)"+"VALUES ('"+m.getMonto()+"','"+m.getResponsable()+"','"+m.getDescripcion()+"','"+m.getFecha()+"','"+m.getProveedor()+"','"+m.getTipo()+"')");
+         
+         } catch(Exception e) {
+          JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+         }      
+         
+     }
 }

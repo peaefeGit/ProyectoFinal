@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import ventanas.NewJFrameLogin;
 import oracle.jrockit.jfr.JFR;
@@ -24,7 +25,8 @@ public class Main {
         
         MySQL db = new MySQL(); 
         db.MySQLConnection("root", "", "/proyecto_colibri");       
-
+        
+        
         NewJFrameLogin ventana = new NewJFrameLogin(db);
         ventana.show();
         
