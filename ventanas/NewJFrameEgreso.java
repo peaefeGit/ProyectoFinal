@@ -148,14 +148,11 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuPrincipalActionPerformed
 
     private void jButtonEgresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEgresoActionPerformed
-<<<<<<< Updated upstream
-        // generar PAGO!
-        try{
-=======
+
        // generar PAGO!
        try{
             System.out.println(cajaActual.getUser().getUser());
->>>>>>> Stashed changes
+
             int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL PAGO ? ", "Pago / Egreso ", JOptionPane.WARNING_MESSAGE);
             Date d = new Date();
             java.sql.Date fecha = new java.sql.Date(d.getTime());

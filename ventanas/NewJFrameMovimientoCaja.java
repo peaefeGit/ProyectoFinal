@@ -6,10 +6,8 @@
 package ventanas;
 
 import clases.Caja;
-import clases.Movimiento;
 import clases.MySQL;
 import java.awt.event.KeyEvent;
-import java.util.Date;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 
@@ -18,15 +16,14 @@ import javax.swing.JOptionPane;
  * @author hp desktop
  */
 public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
-    private MySQL db;
+    private MySQL bd;
     private NewJFramePrincipal principal;
     private Caja cajaActual;
-    private Movimiento m;
     /**
      * Creates new form NewJFrameMovimientoCaja
      */
     public NewJFrameMovimientoCaja(NewJFramePrincipal principal, Caja cajaA, MySQL bd) {
-        this.db= bd;
+        this.bd= bd;
         this.cajaActual = cajaA;
         this.principal = principal;
         initComponents();
@@ -196,7 +193,6 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
     private void jButtonMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMovimientoActionPerformed
         try{
             // falta la parte de la validacion de usuario
-<<<<<<< Updated upstream
             int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
             if (eleccion == JOptionPane.YES_OPTION){
                 boolean actual = this.bd.validarLogin(jPasswordField, jTextFieldUsuario);
@@ -211,48 +207,6 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                         cajaActual.setMonto(cajaActual.getMonto() - mov);
                         cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
                             + "#"+jTextFieldUsuario.getText());
-=======
-                int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL MOVIMIENTO ? ", "CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
-                if (eleccion == JOptionPane.YES_OPTION){
-                    boolean actual = this.db.validarLogin(jPasswordField, jTextFieldUsuario);
-                    if (actual){  
-                         String movStr = jTextFieldMonto.getText();
-                         Double mov = Double.parseDouble(movStr);
-                         Date d = new Date();
-                         java.sql.Date fecha = new java.sql.Date(d.getTime());
-                         if (jRadioButtonDeposito.isSelected()){
-                            cajaActual.setMonto(cajaActual.getMonto() + mov);
-                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"##"+jTextFieldUsuario.getText());
-                            m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Deposito");
-                            db.guardarMovimiento(m);
-                            JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
-                             jTextFieldMonto.setText("");
-                             jTextFieldDescripcion.setText("");
-                             jTextFieldUsuario.setText("");
-                             jPasswordField.setText(""); 
-                             
-                             
-                        }   else if (jRadioButtonExtraccion.isSelected()){
-                            cajaActual.setMonto(cajaActual.getMonto() - mov);
-                            cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
-                                    + "#"+jTextFieldUsuario.getText());
-                            m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Extraccion");
-                            db.guardarMovimiento(m);
-                            JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
-                             jTextFieldMonto.setText("");
-                             jTextFieldDescripcion.setText("");
-                             jTextFieldUsuario.setText("");
-                             jPasswordField.setText("");
-                            
-
-                             
-                        } else {
-                             JOptionPane.showMessageDialog(null, " Debes seleccionar entre Extraccion o Deposito antes de realizar el movimiento ");
-                        }
-                        
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Error en el ingreso de datos del usuario");
->>>>>>> Stashed changes
                     }
                     JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
                     jTextFieldMonto.setText("");
