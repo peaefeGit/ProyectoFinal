@@ -41,7 +41,6 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelEgreso = new javax.swing.JPanel();
-        jLabelEgreso = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
         jLabelMonto = new javax.swing.JLabel();
         jTextFieldDescripcion = new javax.swing.JTextField();
@@ -50,24 +49,33 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         jButtonMenuPrincipal = new javax.swing.JButton();
         jLabelProveedor = new javax.swing.JLabel();
         jComboBoxProveedor = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelEgreso.setBackground(new java.awt.Color(109, 176, 248));
+        jPanelEgreso.setBackground(new java.awt.Color(0, 0, 0));
         jPanelEgreso.setForeground(new java.awt.Color(109, 176, 248));
+        jPanelEgreso.setLayout(null);
 
-        jLabelEgreso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelEgreso.setText("Egresos / Pagos");
-
+        jLabelDescripcion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDescripcion.setText("Descripcion: ");
+        jPanelEgreso.add(jLabelDescripcion);
+        jLabelDescripcion.setBounds(30, 130, 80, 20);
 
+        jLabelMonto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelMonto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMonto.setText("Monto:        $ ");
+        jPanelEgreso.add(jLabelMonto);
+        jLabelMonto.setBounds(37, 160, 80, 20);
 
         jTextFieldDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldDescripcionKeyTyped(evt);
             }
         });
+        jPanelEgreso.add(jTextFieldDescripcion);
+        jTextFieldDescripcion.setBounds(120, 130, 193, 20);
 
         jTextFieldMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +87,8 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 jTextFieldMontoKeyTyped(evt);
             }
         });
+        jPanelEgreso.add(jTextFieldMonto);
+        jTextFieldMonto.setBounds(120, 160, 114, 20);
 
         jButtonEgreso.setText("Cargar Pago");
         jButtonEgreso.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +96,8 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 jButtonEgresoActionPerformed(evt);
             }
         });
+        jPanelEgreso.add(jButtonEgreso);
+        jButtonEgreso.setBounds(260, 200, 110, 23);
 
         jButtonMenuPrincipal.setText("Menú Principal");
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -93,91 +105,45 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 jButtonMenuPrincipalActionPerformed(evt);
             }
         });
+        jPanelEgreso.add(jButtonMenuPrincipal);
+        jButtonMenuPrincipal.setBounds(110, 200, 134, 23);
 
+        jLabelProveedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelProveedor.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProveedor.setText("Proveedor: ");
+        jPanelEgreso.add(jLabelProveedor);
+        jLabelProveedor.setBounds(30, 100, 90, 20);
 
         jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quimica quillay", "rama", "vasco", "verduleria", "pollos", "mr pan", "huevos", "chino", "helado", "cafe bakan", "dallachiesa", "hielo 42", "la gran miga", "mauca", "mc cain", "nini", "papelera", "purre", "quilmes tolosa", "copete", "otros" }));
+        jPanelEgreso.add(jComboBoxProveedor);
+        jComboBoxProveedor.setBounds(120, 100, 193, 20);
 
-        javax.swing.GroupLayout jPanelEgresoLayout = new javax.swing.GroupLayout(jPanelEgreso);
-        jPanelEgreso.setLayout(jPanelEgresoLayout);
-        jPanelEgresoLayout.setHorizontalGroup(
-            jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDescripcion)
-                    .addComponent(jLabelMonto)
-                    .addComponent(jLabelProveedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                        .addGap(0, 45, Short.MAX_VALUE)
-                        .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEgreso)
-                        .addGap(25, 25, 25))
-                    .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                        .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.Alignment.LEADING, 0, 193, Short.MAX_VALUE))
-                            .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabelEgreso)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanelEgresoLayout.setVerticalGroup(
-            jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEgresoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabelEgreso)
-                .addGap(43, 43, 43)
-                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelProveedor)
-                    .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDescripcion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMonto)
-                    .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanelEgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
+        jPanelEgreso.add(jLabel1);
+        jLabel1.setBounds(0, 0, 390, 260);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelEgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelEgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMontoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMontoActionPerformed
-
     private void jButtonMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuPrincipalActionPerformed
-       this.principal.setVisible(true);
-       dispose();
+        this.principal.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonMenuPrincipalActionPerformed
 
     private void jButtonEgresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEgresoActionPerformed
-       // generar PAGO!
-       try{
+        // generar PAGO!
+        try{
             int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL PAGO ? ", "Pago / Egreso ", JOptionPane.WARNING_MESSAGE);
             if (eleccion == JOptionPane.YES_OPTION){
                 String pago = jTextFieldMonto.getText();
@@ -187,57 +153,56 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, " PAGO REALIZADO ");
                 jTextFieldMonto.setText("");
                 jTextFieldDescripcion.setText("");
-                
+
             }else if (eleccion == JOptionPane.CANCEL_OPTION){
-           
+
             }else if (eleccion == JOptionPane.CLOSED_OPTION){
-           
+
             }
-            
-            
+
             //prueba en consola
             for(int x=0;x<cajaActual.getEgreso().size();x++) {
                 System.out.println(cajaActual.getEgreso().get(x));
             }
             System.out.println(cajaActual.getMonto());
-            
-            
-            
-       }catch (NumberFormatException e){
+
+        }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(null, "FORMATO INCORRECTO EN EL INGRESO DE DATOS", "ERROR", JOptionPane.ERROR_MESSAGE);
-            
-       } 
-       
-       
+
+        }
+
     }//GEN-LAST:event_jButtonEgresoActionPerformed
 
     private void jTextFieldMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMontoKeyTyped
-       //no deja escribir letras , solamente un solo punto, unicamente deja escribir numeros!
-       int k = evt.getKeyChar();
-       if ((k >= 46) && (k<= 57) ){
-          if (k == 46){
-             String dato =  jTextFieldMonto.getText();
-             int tam = dato.length();
-             for (int i=0; i<=tam; i++){
-                 if(dato.contains("."))
-                     evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-                 
-                 
-             }
-          }if (k == 47){
-              evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-          } 
-       }else{
-           evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-           evt.consume();
-       }
-       if (k == KeyEvent.VK_ENTER){
-           jButtonEgreso.doClick();
-       }
+        //no deja escribir letras , solamente un solo punto, unicamente deja escribir numeros!
+        int k = evt.getKeyChar();
+        if ((k >= 46) && (k<= 57) ){
+            if (k == 46){
+                String dato =  jTextFieldMonto.getText();
+                int tam = dato.length();
+                for (int i=0; i<=tam; i++){
+                    if(dato.contains("."))
+                    evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+
+                }
+            }if (k == 47){
+                evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            }
+        }else{
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            evt.consume();
+        }
+        if (k == KeyEvent.VK_ENTER){
+            jButtonEgreso.doClick();
+        }
     }//GEN-LAST:event_jTextFieldMontoKeyTyped
 
+    private void jTextFieldMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMontoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMontoActionPerformed
+
     private void jTextFieldDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescripcionKeyTyped
-        
+
         presEnterEgreso(evt);
     }//GEN-LAST:event_jTextFieldDescripcionKeyTyped
     public void presEnterEgreso (java.awt.event.KeyEvent evt){
@@ -285,8 +250,8 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEgreso;
     private javax.swing.JButton jButtonMenuPrincipal;
     private javax.swing.JComboBox<String> jComboBoxProveedor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDescripcion;
-    private javax.swing.JLabel jLabelEgreso;
     private javax.swing.JLabel jLabelMonto;
     private javax.swing.JLabel jLabelProveedor;
     private javax.swing.JPanel jPanelEgreso;

@@ -41,7 +41,6 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelCaja = new javax.swing.JPanel();
-        jLabelTitulo = new javax.swing.JLabel();
         jLabelAperturaCaja = new javax.swing.JLabel();
         jLabelGasto = new javax.swing.JLabel();
         jScrollPaneGasto = new javax.swing.JScrollPane();
@@ -52,27 +51,41 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jButtonCerrar = new javax.swing.JButton();
         jLabelTotal = new javax.swing.JLabel();
         jTextFieldApertura = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelCaja.setBackground(new java.awt.Color(109, 176, 248));
+        jPanelCaja.setBackground(new java.awt.Color(0, 0, 0));
         jPanelCaja.setForeground(new java.awt.Color(109, 176, 248));
+        jPanelCaja.setLayout(null);
 
-        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelTitulo.setText("Caja");
-
-        jLabelAperturaCaja.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelAperturaCaja.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelAperturaCaja.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAperturaCaja.setText("Apertura de caja");
+        jPanelCaja.add(jLabelAperturaCaja);
+        jLabelAperturaCaja.setBounds(30, 90, 140, 15);
 
-        jLabelGasto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelGasto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelGasto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelGasto.setText("Egreso / Gasto");
+        jPanelCaja.add(jLabelGasto);
+        jLabelGasto.setBounds(30, 150, 150, 15);
 
         jScrollPaneGasto.setViewportView(jListGasto);
 
+        jPanelCaja.add(jScrollPaneGasto);
+        jScrollPaneGasto.setBounds(30, 170, 178, 170);
+
         jScrollPaneVenta.setViewportView(jListVenta);
 
-        jLabelVenta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jPanelCaja.add(jScrollPaneVenta);
+        jScrollPaneVenta.setBounds(240, 110, 156, 230);
+
+        jLabelVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelVenta.setForeground(new java.awt.Color(255, 255, 255));
         jLabelVenta.setText("Venta");
+        jPanelCaja.add(jLabelVenta);
+        jLabelVenta.setBounds(240, 90, 110, 15);
 
         jButtonCerrar.setText("Cerrar");
         jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,72 +93,30 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
                 jButtonCerrarActionPerformed(evt);
             }
         });
+        jPanelCaja.add(jButtonCerrar);
+        jButtonCerrar.setBounds(283, 360, 90, 23);
 
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTotal.setText("Total Parcial: $");
+        jPanelCaja.add(jLabelTotal);
+        jLabelTotal.setBounds(30, 350, 170, 15);
+        jPanelCaja.add(jTextFieldApertura);
+        jTextFieldApertura.setBounds(30, 110, 178, 28);
 
-        javax.swing.GroupLayout jPanelCajaLayout = new javax.swing.GroupLayout(jPanelCaja);
-        jPanelCaja.setLayout(jPanelCajaLayout);
-        jPanelCajaLayout.setHorizontalGroup(
-            jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCajaLayout.createSequentialGroup()
-                .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCajaLayout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCajaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonCerrar)
-                            .addGroup(jPanelCajaLayout.createSequentialGroup()
-                                .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabelGasto)
-                                    .addComponent(jLabelAperturaCaja)
-                                    .addComponent(jScrollPaneGasto, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldApertura))
-                                .addGap(37, 37, 37)
-                                .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelVenta)
-                                    .addComponent(jScrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanelCajaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTotal)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanelCajaLayout.setVerticalGroup(
-            jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCajaLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabelTitulo)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAperturaCaja)
-                    .addComponent(jLabelVenta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCajaLayout.createSequentialGroup()
-                        .addComponent(jTextFieldApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelGasto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneGasto, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jLabelTotal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButtonCerrar)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja2.png"))); // NOI18N
+        jPanelCaja.add(jLabel1);
+        jLabel1.setBounds(0, 0, 420, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelCaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -193,9 +164,9 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAperturaCaja;
     private javax.swing.JLabel jLabelGasto;
-    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JLabel jLabelVenta;
     private javax.swing.JList<String> jListGasto;
