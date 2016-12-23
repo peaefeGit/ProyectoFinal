@@ -56,8 +56,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
              
         jButtonDescuento.setContentAreaFilled(false);
         jButtonDescuento.setBorderPainted(false);
-        
-<<<<<<< HEAD
+
         jButtonBorrar.setContentAreaFilled(false);
         jButtonBorrar.setBorderPainted(false);
         
@@ -75,10 +74,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         
         jButtonMenuPrincipal.setContentAreaFilled(false);
         jButtonMenuPrincipal.setBorderPainted(false);
-=======
+
         //jTextFieldTotal.setEditable(false);
         
->>>>>>> 931053d2b60b21d1bddea3fcb13b702bf7492dc3
+
     }
     
 

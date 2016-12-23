@@ -304,7 +304,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarcaja3.png"))); // NOI18N
         jPanelCerrarCaja.add(jLabelFondo);
-        jLabelFondo.setBounds(0, 0, 680, 680);
+        jLabelFondo.setBounds(0, 0, 674, 680);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
