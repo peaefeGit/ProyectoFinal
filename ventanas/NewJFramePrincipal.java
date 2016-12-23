@@ -35,6 +35,7 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
         //setDefaultCloseOperation(0);//anula la CRUZ exit
         setTitle("Colibrí Arte y Cultura");
         this.jLabelUsuario.setText(this.jLabelUsuario.getText()+this.cajaActual.getUser().getUser());
+        
         jButtonCerrarCaja.setContentAreaFilled(false);
         jButtonCerrarCaja.setBorderPainted(false);
         
@@ -149,7 +150,7 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
         jButtonEgresosPagos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonEgresosPagos.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEgresosPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/payment.png"))); // NOI18N
-        jButtonEgresosPagos.setText("Pagos");
+        jButtonEgresosPagos.setText("Proveedores");
         jButtonEgresosPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonEgresosPagos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonEgresosPagos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -736,7 +737,7 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoprincipal.jpg"))); // NOI18N
         jPanelPrincipal.add(jLabel1);
-        jLabel1.setBounds(-10, -20, 900, 640);
+        jLabel1.setBounds(-10, -20, 910, 640);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

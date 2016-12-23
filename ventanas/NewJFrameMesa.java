@@ -52,10 +52,35 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         
         //llena lista base datos
         db.llenarJlist(jListPlato);
+        //botones transparantes
+             
+        jButtonDescuento.setContentAreaFilled(false);
+        jButtonDescuento.setBorderPainted(false);
         
+<<<<<<< HEAD
+        jButtonBorrar.setContentAreaFilled(false);
+        jButtonBorrar.setBorderPainted(false);
+        
+        jButtonPlato.setContentAreaFilled(false);
+        jButtonPlato.setBorderPainted(false);
+    
+        jButtonIngrediente.setContentAreaFilled(false);
+        jButtonIngrediente.setBorderPainted(false);
+        
+        jButtonCerrarCuenta.setContentAreaFilled(false);
+        jButtonCerrarCuenta.setBorderPainted(false);
+        
+        jButtonBorrarCuenta.setContentAreaFilled(false);
+        jButtonBorrarCuenta.setBorderPainted(false);
+        
+        jButtonMenuPrincipal.setContentAreaFilled(false);
+        jButtonMenuPrincipal.setBorderPainted(false);
+=======
         //jTextFieldTotal.setEditable(false);
         
+>>>>>>> 931053d2b60b21d1bddea3fcb13b702bf7492dc3
     }
+    
 
 
     /**
@@ -104,10 +129,12 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonPastas = new javax.swing.JButton();
         jButtonMilanesas = new javax.swing.JButton();
         jButtonPiza = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelMesa.setBackground(new java.awt.Color(0, 204, 255));
+        jPanelMesa.setBackground(new java.awt.Color(151, 108, 59));
+        jPanelMesa.setLayout(null);
 
         jTextFieldPlato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -117,12 +144,22 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jTextFieldPlatoKeyReleased(evt);
             }
         });
+        jPanelMesa.add(jTextFieldPlato);
+        jTextFieldPlato.setBounds(269, 110, 137, 20);
+        jPanelMesa.add(jTextFieldIngrediente);
+        jTextFieldIngrediente.setBounds(416, 110, 125, 20);
 
         jScrollPanePlato.setViewportView(jListPlato);
 
+        jPanelMesa.add(jScrollPanePlato);
+        jScrollPanePlato.setBounds(269, 144, 137, 183);
+
         jScrollPaneIngrediente.setViewportView(jListIngrediente);
 
-        jButtonPlato.setText("Cargar Plato");
+        jPanelMesa.add(jScrollPaneIngrediente);
+        jScrollPaneIngrediente.setBounds(416, 144, 125, 183);
+
+        jButtonPlato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
         jButtonPlato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonPlatoMouseClicked(evt);
@@ -133,25 +170,52 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonPlatoActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonPlato);
+        jButtonPlato.setBounds(310, 330, 60, 40);
 
-        jButtonIngrediente.setText("Cargar Ingrediente");
+        jButtonIngrediente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
+        jPanelMesa.add(jButtonIngrediente);
+        jButtonIngrediente.setBounds(450, 330, 60, 40);
 
+        jLabelPlato.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPlato.setText("Buscar");
+        jPanelMesa.add(jLabelPlato);
+        jLabelPlato.setBounds(269, 90, 60, 14);
 
+        jLabelIngrediente.setForeground(new java.awt.Color(255, 255, 255));
         jLabelIngrediente.setText("Buscar Ingrediente");
+        jPanelMesa.add(jLabelIngrediente);
+        jLabelIngrediente.setBounds(416, 90, 120, 14);
 
-        jPanelCuenta.setBackground(new java.awt.Color(51, 153, 255));
+        jPanelCuenta.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelCuenta.setLayout(null);
 
+        jButtonBorrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
         jButtonBorrar.setText("Borrar");
+        jButtonBorrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonBorrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonBorrarMouseClicked(evt);
             }
         });
+        jPanelCuenta.add(jButtonBorrar);
+        jButtonBorrar.setBounds(340, 30, 80, 50);
 
-        jButtonDescuento.setText("Aplicar Descuento");
+        jButtonDescuento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonDescuento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/descuento.png"))); // NOI18N
+        jButtonDescuento.setText("Descuento");
+        jButtonDescuento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonDescuento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanelCuenta.add(jButtonDescuento);
+        jButtonDescuento.setBounds(330, 90, 100, 60);
 
+        jButtonCerrarCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonCerrarCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarcaja.png"))); // NOI18N
         jButtonCerrarCuenta.setText("Cerrar Cuenta");
+        jButtonCerrarCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCerrarCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonCerrarCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonCerrarCuentaMouseClicked(evt);
@@ -160,12 +224,18 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonCerrarCuentaMouseEntered(evt);
             }
         });
+        jPanelCuenta.add(jButtonCerrarCuenta);
+        jButtonCerrarCuenta.setBounds(310, 230, 120, 80);
 
         jLabelCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelCuenta.setText("CUENTA");
+        jPanelCuenta.add(jLabelCuenta);
+        jLabelCuenta.setBounds(161, 6, 47, 15);
 
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTotal.setText("TOTAL: $ ");
+        jPanelCuenta.add(jLabelTotal);
+        jLabelTotal.setBounds(10, 263, 52, 14);
 
         jTableCuenta = new javax.swing.JTable(){
             public boolean isCellEditable(int row, int column){
@@ -183,82 +253,66 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jTableCuenta.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableCuenta);
 
+        jPanelCuenta.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 32, 300, 221);
+
         jTextFieldTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTotalActionPerformed(evt);
             }
         });
+        jPanelCuenta.add(jTextFieldTotal);
+        jTextFieldTotal.setBounds(66, 260, 84, 20);
 
-        javax.swing.GroupLayout jPanelCuentaLayout = new javax.swing.GroupLayout(jPanelCuenta);
-        jPanelCuenta.setLayout(jPanelCuentaLayout);
-        jPanelCuentaLayout.setHorizontalGroup(
-            jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                        .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                                .addComponent(jLabelTotal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonDescuento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonCerrarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                        .addComponent(jLabelCuenta)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanelCuentaLayout.setVerticalGroup(
-            jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                        .addComponent(jButtonBorrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDescuento))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTotal)
-                    .addComponent(jButtonCerrarCuenta)
-                    .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53))
-        );
+        jPanelMesa.add(jPanelCuenta);
+        jPanelCuenta.setBounds(559, 100, 430, 310);
 
+        jLabelMesa.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMesa.setText("COMENTARIO: ");
+        jPanelMesa.add(jLabelMesa);
+        jLabelMesa.setBounds(315, 14, 90, 14);
 
         jTextFieldMesa.setText(this.btn.getText());
         jTextFieldMesa.setEditable(false);
+        jPanelMesa.add(jTextFieldMesa);
+        jTextFieldMesa.setBounds(409, 11, 135, 20);
 
         jCheckBoxMesa.setSelected(true);
-        jCheckBoxMesa.setBackground(new java.awt.Color(0, 204, 255));
+        jCheckBoxMesa.setBackground(new java.awt.Color(0, 0, 0));
+        jCheckBoxMesa.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxMesa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCheckBoxMesaMouseClicked(evt);
             }
         });
+        jPanelMesa.add(jCheckBoxMesa);
+        jCheckBoxMesa.setBounds(546, 11, 21, 21);
 
+        jButtonMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
         jButtonMenuPrincipal.setText("MENU PRINCIPAL");
+        jButtonMenuPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonMenuPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuPrincipalActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonMenuPrincipal);
+        jButtonMenuPrincipal.setBounds(580, 420, 146, 80);
 
+        jButtonBorrarCuenta.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBorrarCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarcuenta.png"))); // NOI18N
         jButtonBorrarCuenta.setText("BORRAR CUENTA");
+        jButtonBorrarCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonBorrarCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonBorrarCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonBorrarCuentaMouseClicked(evt);
             }
         });
+        jPanelMesa.add(jButtonBorrarCuenta);
+        jButtonBorrarCuenta.setBounds(430, 420, 140, 80);
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonBebidas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -271,6 +325,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonBebidasActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonBebidas);
+        jButtonBebidas.setBounds(127, 343, 110, 77);
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonPostre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -283,6 +339,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonPostreActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonPostre);
+        jButtonPostre.setBounds(127, 426, 110, 77);
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonCafeteria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -295,6 +353,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonCafeteriaActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonCafeteria);
+        jButtonCafeteria.setBounds(10, 426, 111, 77);
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonPanqueque.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -307,6 +367,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonPanquequeActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonPanqueque);
+        jButtonPanqueque.setBounds(126, 11, 112, 77);
 
         jButtonTortilla.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonTortilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tortilla.jpg"))); // NOI18N
@@ -318,6 +380,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonTortillaActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonTortilla);
+        jButtonTortilla.setBounds(10, 94, 110, 77);
 
         jButtonPan1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonPan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pan.jpg"))); // NOI18N
@@ -334,17 +398,24 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonPan1KeyReleased(evt);
             }
         });
+        jPanelMesa.add(jButtonPan1);
+        jButtonPan1.setBounds(11, 11, 109, 77);
 
         jButtonHamburgesa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonHamburgesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hamburgesa.jpg"))); // NOI18N
         jButtonHamburgesa.setText("Hamburgesa");
         jButtonHamburgesa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonHamburgesa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+<<<<<<< HEAD
         jButtonHamburgesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHamburgesaActionPerformed(evt);
             }
         });
+=======
+        jPanelMesa.add(jButtonHamburgesa);
+        jButtonHamburgesa.setBounds(127, 177, 112, 77);
+>>>>>>> 09e42f9dd489cb0b66d38d381b30ebfe4328dc19
 
         jButtonFritas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonFritas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fritas.jpg"))); // NOI18N
@@ -356,6 +427,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonFritasActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonFritas);
+        jButtonFritas.setBounds(10, 343, 110, 77);
 
         jButtonEnsalada.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonEnsalada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ensalada.png"))); // NOI18N
@@ -367,6 +440,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonEnsaladaActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonEnsalada);
+        jButtonEnsalada.setBounds(127, 260, 111, 77);
 
         jButtonPastas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonPastas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tallarines.jpg"))); // NOI18N
@@ -378,6 +453,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonPastasActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonPastas);
+        jButtonPastas.setBounds(10, 177, 111, 77);
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonMilanesas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -385,11 +462,16 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jButtonMilanesas.setText("Milanesas");
         jButtonMilanesas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonMilanesas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+<<<<<<< HEAD
         jButtonMilanesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMilanesasActionPerformed(evt);
             }
         });
+=======
+        jPanelMesa.add(jButtonMilanesas);
+        jButtonMilanesas.setBounds(10, 260, 110, 77);
+>>>>>>> 09e42f9dd489cb0b66d38d381b30ebfe4328dc19
 
         jButtonPiza.setIcon(new ImageIcon("../imagenes/iconoPiza.jpg"));
         jButtonPiza.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -402,147 +484,22 @@ public class NewJFrameMesa extends javax.swing.JFrame {
                 jButtonPizaActionPerformed(evt);
             }
         });
+        jPanelMesa.add(jButtonPiza);
+        jButtonPiza.setBounds(126, 94, 112, 77);
 
-        javax.swing.GroupLayout jPanelMesaLayout = new javax.swing.GroupLayout(jPanelMesa);
-        jPanelMesa.setLayout(jPanelMesaLayout);
-        jPanelMesaLayout.setHorizontalGroup(
-            jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanelMesaLayout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addComponent(jButtonPan1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonPanqueque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanelMesaLayout.createSequentialGroup()
-                            .addComponent(jButtonMilanesas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(7, 7, 7)
-                            .addComponent(jButtonEnsalada, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelMesaLayout.createSequentialGroup()
-                            .addComponent(jButtonTortilla, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonPiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanelMesaLayout.createSequentialGroup()
-                        .addComponent(jButtonPastas, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonHamburgesa, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelMesaLayout.createSequentialGroup()
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonFritas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonPostre, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 30, Short.MAX_VALUE)
-                .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelMesaLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabelMesa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBoxMesa)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMesaLayout.createSequentialGroup()
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButtonPlato, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMesaLayout.createSequentialGroup()
-                                .addComponent(jLabelPlato)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextFieldPlato, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPanePlato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                                .addComponent(jButtonBorrarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                                .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabelIngrediente)
-                                    .addComponent(jTextFieldIngrediente)
-                                    .addComponent(jButtonIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPaneIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36))))
-        );
-        jPanelMesaLayout.setVerticalGroup(
-            jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMesaLayout.createSequentialGroup()
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxMesa)
-                            .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelMesa)
-                                .addComponent(jTextFieldMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                                .addComponent(jLabelPlato)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(jScrollPanePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonPlato))
-                            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                                .addComponent(jLabelIngrediente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(jScrollPaneIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonIngrediente)))
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBorrarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMesaLayout.createSequentialGroup()
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                                .addComponent(jButtonPanqueque)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPiza))
-                            .addGroup(jPanelMesaLayout.createSequentialGroup()
-                                .addComponent(jButtonPan1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonTortilla)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonPastas, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonHamburgesa))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonMilanesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEnsalada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonBebidas)
-                            .addComponent(jButtonFritas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelMesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonCafeteria)
-                            .addComponent(jButtonPostre))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cuenta.png"))); // NOI18N
+        jPanelMesa.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1040, 530);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMesa, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMesa, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
         );
 
         pack();
@@ -789,6 +746,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPostre;
     private javax.swing.JButton jButtonTortilla;
     private javax.swing.JCheckBox jCheckBoxMesa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCuenta;
     private javax.swing.JLabel jLabelIngrediente;
     private javax.swing.JLabel jLabelMesa;
