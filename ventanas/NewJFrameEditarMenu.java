@@ -31,7 +31,7 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Colibrí Arte y Cultura - Editar Menu");
         
-        db.llenarJtable(jTableProductos);
+        //db.llenarJtable(jTableProductos);
         jTableProductos.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         jTableProductos.getColumnModel().getColumn(0).setPreferredWidth(200);
         
@@ -268,7 +268,7 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
             if (eleccion == JOptionPane.YES_OPTION){
                 Producto p = db.getProducto(jTextFieldProdEdit.getText());
                 p.setPrecio(precio);
-                db.updateProducto(p);
+                //db.updateProducto(p);
                 jTextFieldPrecioEdit.setEditable(false);
                 //guardar cambios en base de datos (precio)
             }else if (eleccion == JOptionPane.CANCEL_OPTION){
