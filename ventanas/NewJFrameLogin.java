@@ -9,6 +9,7 @@ import clases.Caja;
 import clases.MySQL;
 import clases.Usuario;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,14 +21,18 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     private Caja cajaA;
     private MySQL db;
     
-    public NewJFrameLogin(MySQL db, Double montoInicial){
+    public NewJFrameLogin(MySQL db, Double montoInicial, Usuario usr){
         this.db  = db;
+        this.cajaA.setUsuario(usr);
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Colibrí Arte y Cultura");
         jTextFieldMontoApertura.setText(montoInicial.toString());
         jTextFieldMontoApertura.setEditable(false);
+        
+        jTextFieldUsuario.setText(usr.getUser());
+        jTextFieldUsuario.setEditable(false);
     }
     public NewJFrameLogin(MySQL db) {
         this.db  = db;
@@ -156,8 +161,12 @@ public class NewJFrameLogin extends javax.swing.JFrame {
        */
        if (actual){
          Usuario logueado = new Usuario(jTextFieldUsuario.getText(), jPasswordField.getText()); 
-         Double f = Double.parseDouble(jTextFieldMontoApertura.getText()); 
-         this.cajaA = new Caja(f, logueado);
+         Double f = Double.parseDouble(jTextFieldMontoApertura.getText());
+         Date fecha = new Date(); // ARREGLAR FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa
+         this.cajaA = new Caja(f, logueado, fecha);
+         db.guardarCaja(cajaA);
+         int id = db.recuperarIdCaja();
+         cajaA.setIdCaja(id);
          NewJFramePrincipal cc = new NewJFramePrincipal(db, this.cajaA);
          cc.setVisible(true);
          dispose();

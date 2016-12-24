@@ -10,7 +10,7 @@ import clases.Movimiento;
 import clases.MySQL;
 import java.awt.event.KeyEvent;
 import java.util.Date;
-
+import java.text.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -154,9 +154,13 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             System.out.println(cajaActual.getUser().getUser());
 
             int eleccion = JOptionPane.showConfirmDialog(null," ¿ DESEA REALIZAR EL PAGO ? ", "Pago / Egreso ", JOptionPane.WARNING_MESSAGE);
-            Date d = new Date();
-            java.sql.Date fecha = new java.sql.Date(d.getTime());
+            //Date d = new Date();
+            //java.sql.Date fecha = new java.sql.Date(d.getTime());
             
+            java.util.Date dt = new java.util.Date();
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String fecha = sdf.format(dt);
+           
             if (eleccion == JOptionPane.YES_OPTION){
                 String pago = jTextFieldMonto.getText();
                 Double egreso = Double.parseDouble(pago);

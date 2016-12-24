@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Caja {
+    private int idCaja;
     private Double montoApertura;
     private ArrayList<String> egreso;//siempre el usuario actual lo realiza
     private ArrayList<String> movimiento;//"+"descripcionDeposito"##"jTextFieldNombreUsuario ** "-"descripcionExtraccion"##"jTextFieldNombreUsuario
@@ -16,12 +17,20 @@ public class Caja {
     private Usuario user;
     private Date fecha;
 
-    public Caja(Double montoApertura, Usuario user){
+    public Caja(Double montoApertura, Usuario user, Date fecha){
         this.montoApertura = montoApertura;
         this.movimiento = new ArrayList();
         this.egreso = new ArrayList();
         this.monto= montoApertura;
         this.user = user;
+        this.fecha = fecha;
+        
+    }
+    
+    public Caja(Double montoApertura, Double monto, Date fecha){
+        this.montoApertura = montoApertura;
+        this.monto= montoApertura;
+        this.fecha = fecha;
         
     }
      public void setMontoApertura (Double x){
@@ -55,5 +64,21 @@ public class Caja {
     }
     public Double getMontoApertura (){
         return this.montoApertura;
+    }
+
+    public int getIdCaja() {
+        return idCaja;
+    }
+
+    public void setIdCaja(int idCaja) {
+        this.idCaja = idCaja;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 }

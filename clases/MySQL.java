@@ -217,7 +217,7 @@ public class MySQL {
              
             Statement stmt = Conexion.createStatement();
             stmt.executeUpdate("INSERT INTO movimientos(monto, responsable, descripcion, fecha, proveedor, tipo)"+"VALUES ('"+m.getMonto()+"','"+m.getResponsable()+"','"+m.getDescripcion()+"','"+m.getFecha()+"','"+m.getProveedor()+"','"+m.getTipo()+"')");
-         
+            
          } catch(Exception e) {
           JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
          }      
@@ -245,4 +245,50 @@ public class MySQL {
         }
      
      }
+     
+     public int recuperarIdCaja(){
+          try {
+            String Query = "SELECT MAX(idCaja) as id from cajas";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            rs.next();
+            int i = rs.getInt("id");
+            return i;
+            } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+            return -1;
+        }
+     }
+     
+      public void updateCaja(Caja c){
+         try {
+             Statement stmt = Conexion.createStatement();
+             stmt.executeUpdate("UPDATE cajas SET monto = '"+c.getMonto()+"' WHERE idCaja = '"+c.getIdCaja()+"'");
+             
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+        }     
+     
+     }
+     
+     public void ultimosMovs (JTable tabla) {
+        try {
+            String Query = "SELECT * FROM productos";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            Object[] row = new Object[4];
+           
+            while (rs.next()) {
+                row[0] = rs.getString("tipo");
+                row[1] = rs.getDouble("precio");
+                row[2] = rs.getString("responsable");
+                row[3] = rs.getDouble("precio");
+                model.addRow(row);                
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+        } 
+    }
 }

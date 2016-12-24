@@ -17,14 +17,14 @@ public class Movimiento {
     private double monto;  
     private String responsable;
     private String descripcion;
-    private Date fecha;
+    private String fecha;
     private String proveedor;
     private String tipo;
     
    
 
     
-    public Movimiento(double monto, String responsable, String descripcion , Date fecha, String proveedor, String tipo) {
+    public Movimiento(double monto, String responsable, String descripcion , String fecha, String proveedor, String tipo) {
         this.monto = monto;
         this.responsable = responsable;
         this.proveedor = proveedor;
@@ -67,11 +67,11 @@ public class Movimiento {
         this.proveedor = proveedor;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

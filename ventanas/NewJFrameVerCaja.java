@@ -6,6 +6,7 @@
 package ventanas;
 
 import clases.Caja;
+import clases.MySQL;
 
 /**
  *
@@ -14,12 +15,14 @@ import clases.Caja;
 public class NewJFrameVerCaja extends javax.swing.JFrame {
     private NewJFramePrincipal principal;
     private Caja cajaActual;
+    private MySQL db;
     /**
      * Creates new form NewJFrameVerCaja
      */
-    public NewJFrameVerCaja(NewJFramePrincipal principal, Caja cajaA) {
+    public NewJFrameVerCaja(NewJFramePrincipal principal, Caja cajaA, MySQL db) {
         this.cajaActual = cajaA;
         this.principal = principal;
+        this.db = db;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -43,14 +46,11 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jPanelCaja = new javax.swing.JPanel();
         jLabelAperturaCaja = new javax.swing.JLabel();
         jLabelGasto = new javax.swing.JLabel();
-        jScrollPaneGasto = new javax.swing.JScrollPane();
-        jListGasto = new javax.swing.JList<>();
-        jScrollPaneVenta = new javax.swing.JScrollPane();
-        jListVenta = new javax.swing.JList<>();
-        jLabelVenta = new javax.swing.JLabel();
         jButtonCerrar = new javax.swing.JButton();
         jLabelTotal = new javax.swing.JLabel();
         jTextFieldApertura = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableMov = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,29 +63,13 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jLabelAperturaCaja.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAperturaCaja.setText("Apertura de caja");
         jPanelCaja.add(jLabelAperturaCaja);
-        jLabelAperturaCaja.setBounds(30, 90, 140, 15);
+        jLabelAperturaCaja.setBounds(10, 20, 140, 15);
 
         jLabelGasto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelGasto.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelGasto.setText("Egreso / Gasto");
+        jLabelGasto.setText("Ultimos movimientos");
         jPanelCaja.add(jLabelGasto);
-        jLabelGasto.setBounds(30, 150, 150, 15);
-
-        jScrollPaneGasto.setViewportView(jListGasto);
-
-        jPanelCaja.add(jScrollPaneGasto);
-        jScrollPaneGasto.setBounds(30, 170, 178, 170);
-
-        jScrollPaneVenta.setViewportView(jListVenta);
-
-        jPanelCaja.add(jScrollPaneVenta);
-        jScrollPaneVenta.setBounds(240, 110, 156, 230);
-
-        jLabelVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelVenta.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelVenta.setText("Venta");
-        jPanelCaja.add(jLabelVenta);
-        jLabelVenta.setBounds(240, 90, 110, 15);
+        jLabelGasto.setBounds(140, 100, 130, 15);
 
         jButtonCerrar.setText("Cerrar");
         jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,15 +78,33 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
             }
         });
         jPanelCaja.add(jButtonCerrar);
-        jButtonCerrar.setBounds(283, 360, 90, 23);
+        jButtonCerrar.setBounds(283, 360, 90, 32);
 
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTotal.setText("Total Parcial: $");
         jPanelCaja.add(jLabelTotal);
-        jLabelTotal.setBounds(30, 350, 170, 15);
+        jLabelTotal.setBounds(20, 370, 170, 15);
         jPanelCaja.add(jTextFieldApertura);
-        jTextFieldApertura.setBounds(30, 110, 178, 28);
+        jTextFieldApertura.setBounds(10, 40, 130, 28);
+
+        jTableMov = new javax.swing.JTable() {
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        jTableMov.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tipo", "Monto", "Responsable", "Fecha"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableMov);
+
+        jPanelCaja.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 120, 400, 230);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja2.png"))); // NOI18N
         jPanelCaja.add(jLabel1);
@@ -157,7 +159,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrameVerCaja(null, null).setVisible(true);
+                new NewJFrameVerCaja(null, null, null).setVisible(true);
             }
         });
     }
@@ -168,12 +170,9 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAperturaCaja;
     private javax.swing.JLabel jLabelGasto;
     private javax.swing.JLabel jLabelTotal;
-    private javax.swing.JLabel jLabelVenta;
-    private javax.swing.JList<String> jListGasto;
-    private javax.swing.JList<String> jListVenta;
     public javax.swing.JPanel jPanelCaja;
-    private javax.swing.JScrollPane jScrollPaneGasto;
-    private javax.swing.JScrollPane jScrollPaneVenta;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableMov;
     private javax.swing.JTextField jTextFieldApertura;
     // End of variables declaration//GEN-END:variables
 }

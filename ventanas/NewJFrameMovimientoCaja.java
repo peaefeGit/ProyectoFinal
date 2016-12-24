@@ -11,6 +11,7 @@ import clases.MySQL;
 import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -236,30 +237,36 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                     if (actual){  
                          String movStr = jTextFieldMonto.getText();
                          Double mov = Double.parseDouble(movStr);
-                         Date d = new Date();
-                         java.sql.Date fecha = new java.sql.Date(d.getTime());
+                         java.util.Date dt = new java.util.Date();
+                         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+                         String fecha = sdf.format(dt);
+                         System.out.println(fecha);
                          if (jRadioButtonDeposito.isSelected()){
                             cajaActual.setMonto(cajaActual.getMonto() + mov);
                             cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"##"+jTextFieldUsuario.getText());
                             JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
-                             jTextFieldMonto.setText("");
+                            String responsable = jTextFieldUsuario.getText();
+                             m = new Movimiento (mov, responsable, jTextFieldDescripcion.getText(), fecha, "", "Deposito");
+                             System.out.println(responsable);
+                             db.guardarMovimiento(m); 
+                            jTextFieldMonto.setText("");
                              jTextFieldDescripcion.setText("");
                              jTextFieldUsuario.setText("");
                              jPasswordField.setText(""); 
-                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Deposito");
-                             db.guardarMovimiento(m);
+                             
                              
                         }   else if (jRadioButtonExtraccion.isSelected()){
                             cajaActual.setMonto(cajaActual.getMonto() - mov);
                             cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
                                     + "#"+jTextFieldUsuario.getText());
                             JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
+                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Extraccion");
+                             db.guardarMovimiento(m);
                              jTextFieldMonto.setText("");
                              jTextFieldDescripcion.setText("");
                              jTextFieldUsuario.setText("");
                              jPasswordField.setText("");
-                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Extraccion");
-                             db.guardarMovimiento(m);
+                            
                         } else {
                              JOptionPane.showMessageDialog(null, " Debes seleccionar entre Extraccion o Deposito antes de realizar el movimiento ");
                         }

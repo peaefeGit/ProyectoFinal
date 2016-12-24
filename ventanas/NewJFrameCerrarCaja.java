@@ -2,9 +2,11 @@ package ventanas;
 
 import clases.Caja;
 import clases.MySQL;
+import clases.Usuario;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -418,12 +420,21 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR falta confirmar proxima caja");
         }      
        //si caja cerrada exitosamente
-       if (ok){       
+       if (ok){
+            java.util.Date fecha = new java.util.Date();
+            //java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+            //String fecha = sdf.format(dt);  // ACA!!!!!!!!!!!!!!!!!!!!!!
+            Usuario usr = new Usuario(jTextFieldUsuarioP.getText(), jPasswordFieldUsuarioP.getText());
+            
             int eleccion = JOptionPane.showConfirmDialog(null," CAJA CERRADA EXITOSAMENTE - desea abrir una nueva caja?", " CERRAR CAJA ", JOptionPane.INFORMATION_MESSAGE);
             if (eleccion == JOptionPane.YES_OPTION){
                 String t = jTextFieldProxCaja.getText();
+                bd.updateCaja(cajaActual);
                 Double prox = Double.parseDouble(t);
-                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox);
+                Caja c = new Caja(prox, usr, fecha);
+                bd.guardarCaja(c);
+                Usuario us = new Usuario (jTextFieldUsuarioP.getText(), jPasswordFieldUsuarioP.getText());
+                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox, us);//esto no ANDA!
                 cc.setVisible(true);
                 this.dispose();
             }else if (eleccion == JOptionPane.NO_OPTION){

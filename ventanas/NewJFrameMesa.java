@@ -11,8 +11,12 @@ import clases.Movimiento;
 import clases.MySQL;
 import clases.Producto;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -511,8 +515,14 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonCerrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseClicked
        int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
-           Date d = new Date();
-           java.sql.Date fecha = new java.sql.Date(d.getTime());
+           //Date d = new Date();
+           //java.sql.Date fecha = new java.sql.Date(d.getTime());
+           
+           java.util.Date dt = new java.util.Date();
+           java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+           String fecha = sdf.format(dt);
+           
+           
            m = new Movimiento (total, cajaActual.getUser().getUser(), "", fecha, "", "Venta");
            db.guardarMovimiento(m);
            this.btn.setBackground(Color.green);
