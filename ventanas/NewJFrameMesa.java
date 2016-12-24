@@ -6,10 +6,12 @@
 package ventanas;
 
 import clases.Caja;
+import clases.Cuenta;
 import clases.MySQL;
 import clases.Producto;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -243,6 +245,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jPanelCuenta.add(jLabelTotal);
         jLabelTotal.setBounds(10, 263, 52, 14);
 
+        jTableCuenta = new javax.swing.JTable() {
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jTableCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -501,8 +508,12 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarCuentaMouseEntered
 
     private void jButtonCerrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseClicked
-       int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
+        int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
+           Date fecha = new Date();
+           java.sql.Date fechasql = new java.sql.Date(fecha.getTime());
+           Cuenta c = new Cuenta(total, fechasql,"");
+           db.guardarCuenta(c);
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);
@@ -511,7 +522,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
            
        }else if (eleccion == JOptionPane.CLOSED_OPTION){
            
-       } 
+       }
     }//GEN-LAST:event_jButtonCerrarCuentaMouseClicked
 
     private void jCheckBoxMesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxMesaMouseClicked
@@ -548,7 +559,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
         
         int i = jTableCuenta.getSelectedRow();
+        
         DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+        total = total - (float) jTableCuenta.getValueAt(i, 2);
+        jTextFieldTotal.setText(total.toString());
         model.removeRow(i);
         
         

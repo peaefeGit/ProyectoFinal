@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 
 public class MySQL {
@@ -135,6 +136,25 @@ public class MySQL {
         
     }
     
+    public void llenarJtable (JTable tabla) {
+        try {
+            String Query = "SELECT * FROM productos";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            Object[] row = new Object[2];
+           
+            while (rs.next()) {
+                row[0] = rs.getString("nombre");
+                row[1] = rs.getFloat("precio");                
+                model.addRow(row);                
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+        } 
+    }
+    
     public Float getPrecioProd(String nombre) {
         
         try {
@@ -211,4 +231,14 @@ public class MySQL {
          }      
          
      }
+     
+     public void updateProducto(Producto p){
+        try {
+             Statement stmt = Conexion.createStatement();
+             stmt.executeUpdate("UPDATE productos SET precio = '"+p.getPrecio()+"' WHERE idProducto = '"+p.getIdProducto()+"'");
+             
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+        }
+    }
 }
