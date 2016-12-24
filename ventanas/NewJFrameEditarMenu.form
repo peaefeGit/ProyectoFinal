@@ -93,7 +93,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButtonGuardarCambios" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="jButtonGuardarCambios" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -131,8 +131,8 @@
                           </Group>
                           <Component id="jButtonEditarPrecio" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="118" max="32767" attributes="0"/>
-                      <Component id="jButtonGuardarCambios" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                      <Component id="jButtonGuardarCambios" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -171,7 +171,15 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonGuardarCambios">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/guardarcambios.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="GUARDAR CAMBIOS"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonGuardarCambiosMouseClicked"/>
@@ -192,14 +200,25 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonPrincipal">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagenes/menuPrincipal.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="MENU PRINCIPAL"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPrincipalActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="440" width="170" height="33"/>
+              <AbsoluteConstraints x="500" y="410" width="130" height="70"/>
             </Constraint>
           </Constraints>
         </Component>

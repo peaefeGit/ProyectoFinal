@@ -35,6 +35,12 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         setResizable(false);
         //setDefaultCloseOperation(0);//anula la CRUZ exit
         setTitle("Colibrí Arte y Cultura - Egreso / Pago");
+        
+        jButtonMenuPrincipal.setContentAreaFilled(false);
+        jButtonMenuPrincipal.setBorderPainted(false);
+        
+        jButtonEgreso.setContentAreaFilled(false);
+        jButtonEgreso.setBorderPainted(false);
     }
 
     /**
@@ -96,23 +102,34 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         jPanelEgreso.add(jTextFieldMonto);
         jTextFieldMonto.setBounds(81, 131, 114, 20);
 
+        jButtonEgreso.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonEgreso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonEgreso.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEgreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/realizarpago.png"))); // NOI18N
         jButtonEgreso.setText("Cargar Pago");
+        jButtonEgreso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonEgreso.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonEgreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEgresoActionPerformed(evt);
             }
         });
         jPanelEgreso.add(jButtonEgreso);
-        jButtonEgreso.setBounds(240, 200, 120, 23);
+        jButtonEgreso.setBounds(250, 180, 110, 70);
 
+        jButtonMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
         jButtonMenuPrincipal.setText("Menú Principal");
+        jButtonMenuPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonMenuPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuPrincipalActionPerformed(evt);
             }
         });
         jPanelEgreso.add(jButtonMenuPrincipal);
-        jButtonMenuPrincipal.setBounds(100, 200, 134, 23);
+        jButtonMenuPrincipal.setBounds(110, 180, 120, 77);
 
         jLabelProveedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelProveedor.setForeground(new java.awt.Color(255, 255, 255));

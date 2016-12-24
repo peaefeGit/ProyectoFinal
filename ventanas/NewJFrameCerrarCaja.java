@@ -30,8 +30,13 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jLabelTotal.setText(jLabelTotal.getText()+this.cajaActual.getMonto().toString());
         jTextAperturaCaja.setText(this.cajaActual.getMontoApertura().toString());
         jTextAperturaCaja.setEditable(false);
-        }
-    @SuppressWarnings("unchecked")
+        
+        jButtonMenuPrincipal.setContentAreaFilled(false);
+        jButtonMenuPrincipal.setBorderPainted(false); 
+        
+        jButtonCerrarCaja.setContentAreaFilled(false);
+        jButtonCerrarCaja.setBorderPainted(false); 
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -126,7 +131,12 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jPanelCerrarCaja.add(jLabelTituloUsuarioP);
         jLabelTituloUsuarioP.setBounds(470, 420, 150, 16);
 
+        jButtonCerrarCaja.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonCerrarCaja.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCerrarCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarcaja32x32.png"))); // NOI18N
         jButtonCerrarCaja.setText("Cerrar Caja");
+        jButtonCerrarCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCerrarCaja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonCerrarCaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonCerrarCajaMouseClicked(evt);
@@ -138,7 +148,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
             }
         });
         jPanelCerrarCaja.add(jButtonCerrarCaja);
-        jButtonCerrarCaja.setBounds(551, 628, 100, 23);
+        jButtonCerrarCaja.setBounds(530, 620, 100, 60);
 
         jScrollPaneVenta.setViewportView(jListVenta);
 
@@ -185,14 +195,19 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jPanelCerrarCaja.add(jPasswordFieldUsuarioP);
         jPasswordFieldUsuarioP.setBounds(470, 470, 151, 20);
 
+        jButtonMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal32x32(3).png"))); // NOI18N
         jButtonMenuPrincipal.setText("Menu Principal");
+        jButtonMenuPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonMenuPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonMenuPrincipalMouseClicked(evt);
             }
         });
         jPanelCerrarCaja.add(jButtonMenuPrincipal);
-        jButtonMenuPrincipal.setBounds(406, 628, 138, 23);
+        jButtonMenuPrincipal.setBounds(370, 620, 138, 60);
 
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
@@ -294,7 +309,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         );
 
         jPanelCerrarCaja.add(jPanelProxCaja);
-        jPanelProxCaja.setBounds(10, 510, 641, 110);
+        jPanelProxCaja.setBounds(10, 500, 641, 110);
         jPanelCerrarCaja.add(jTextAperturaCaja);
         jTextAperturaCaja.setBounds(10, 110, 253, 28);
 
@@ -316,7 +331,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelCerrarCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelCerrarCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

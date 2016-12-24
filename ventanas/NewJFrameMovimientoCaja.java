@@ -36,8 +36,14 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         //setDefaultCloseOperation(0);//anula la CRUZ exit
         setTitle("Colibrí Arte y Cultura - Movimiento de Caja");
         
-    }
+        jButtonMenuPrincipal.setContentAreaFilled(false);
+        jButtonMenuPrincipal.setBorderPainted(false);
+        
+        jButtonMovimiento.setContentAreaFilled(false);
+        jButtonMovimiento.setBorderPainted(false);        
+                    
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,14 +108,19 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         jPanelMovCaja.add(jTextFieldMonto);
         jTextFieldMonto.setBounds(91, 129, 160, 20);
 
+        jButtonMovimiento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonMovimiento.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMovimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/realizarpago.png"))); // NOI18N
         jButtonMovimiento.setText("Realizar Movimiento");
+        jButtonMovimiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonMovimiento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonMovimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMovimientoActionPerformed(evt);
             }
         });
         jPanelMovCaja.add(jButtonMovimiento);
-        jButtonMovimiento.setBounds(240, 240, 150, 23);
+        jButtonMovimiento.setBounds(240, 220, 150, 70);
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,14 +150,19 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         jPanelMovCaja.add(jPasswordField);
         jPasswordField.setBounds(93, 191, 160, 20);
 
+        jButtonMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
         jButtonMenuPrincipal.setText("Menu Principal");
+        jButtonMenuPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonMenuPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuPrincipalActionPerformed(evt);
             }
         });
         jPanelMovCaja.add(jButtonMenuPrincipal);
-        jButtonMenuPrincipal.setBounds(80, 240, 144, 23);
+        jButtonMenuPrincipal.setBounds(80, 220, 144, 70);
 
         jRadioButtonDeposito.setBackground(new java.awt.Color(106, 79, 72));
         buttonGroupMovimiento.add(jRadioButtonDeposito);

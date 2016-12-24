@@ -32,6 +32,9 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jTextFieldApertura.setText(this.cajaActual.getMontoApertura().toString());
         jTextFieldApertura.setEditable(false);
         jLabelTotal.setText(jLabelTotal.getText()+this.cajaActual.getMonto().toString());
+        
+        jButtonPrincipal.setContentAreaFilled(false);
+        jButtonPrincipal.setBorderPainted(false);
     }
 
     /**
@@ -46,7 +49,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jPanelCaja = new javax.swing.JPanel();
         jLabelAperturaCaja = new javax.swing.JLabel();
         jLabelGasto = new javax.swing.JLabel();
-        jButtonCerrar = new javax.swing.JButton();
+        jButtonPrincipal = new javax.swing.JButton();
         jLabelTotal = new javax.swing.JLabel();
         jTextFieldApertura = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -69,22 +72,24 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jLabelGasto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelGasto.setText("Ultimos movimientos");
         jPanelCaja.add(jLabelGasto);
-        jLabelGasto.setBounds(140, 100, 130, 15);
+        jLabelGasto.setBounds(150, 90, 130, 15);
 
-        jButtonCerrar.setText("Cerrar");
-        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
+        jButtonPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCerrarActionPerformed(evt);
+                jButtonPrincipalActionPerformed(evt);
             }
         });
-        jPanelCaja.add(jButtonCerrar);
-        jButtonCerrar.setBounds(283, 360, 90, 32);
+        jPanelCaja.add(jButtonPrincipal);
+        jButtonPrincipal.setBounds(310, 340, 70, 60);
 
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTotal.setText("Total Parcial: $");
         jPanelCaja.add(jLabelTotal);
-        jLabelTotal.setBounds(20, 370, 170, 15);
+        jLabelTotal.setBounds(20, 360, 170, 15);
         jPanelCaja.add(jTextFieldApertura);
         jTextFieldApertura.setBounds(10, 40, 130, 28);
 
@@ -104,11 +109,11 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableMov);
 
         jPanelCaja.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 120, 400, 230);
+        jScrollPane1.setBounds(10, 110, 400, 230);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja2.png"))); // NOI18N
         jPanelCaja.add(jLabel1);
-        jLabel1.setBounds(0, 0, 420, 400);
+        jLabel1.setBounds(0, 0, 430, 410);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,10 +129,10 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+    private void jButtonPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrincipalActionPerformed
        this.principal.setVisible(true);
        dispose();
-    }//GEN-LAST:event_jButtonCerrarActionPerformed
+    }//GEN-LAST:event_jButtonPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,7 +170,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JButton jButtonPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAperturaCaja;
     private javax.swing.JLabel jLabelGasto;

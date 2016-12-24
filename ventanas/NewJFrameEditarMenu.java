@@ -31,6 +31,12 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Colibrí Arte y Cultura - Editar Menu");
         
+        jButtonGuardarCambios.setContentAreaFilled(false);
+        jButtonGuardarCambios.setBorderPainted(false);
+        
+        jButtonPrincipal.setContentAreaFilled(false);
+        jButtonPrincipal.setBorderPainted(false);
+        
         db.llenarJtable(jTableProductos);
         jTableProductos.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         jTableProductos.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -105,7 +111,11 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
 
         jTextFieldProdEdit.setEditable(false);
 
+        jButtonGuardarCambios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonGuardarCambios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardarcambios.png"))); // NOI18N
         jButtonGuardarCambios.setText("GUARDAR CAMBIOS");
+        jButtonGuardarCambios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonGuardarCambios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonGuardarCambios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonGuardarCambiosMouseClicked(evt);
@@ -129,7 +139,7 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
                 .addGroup(jPanelCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelCambiosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCambiosLayout.createSequentialGroup()
                         .addGroup(jPanelCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelProdEdit)
@@ -156,22 +166,27 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
                         .addComponent(jLabelPrecioEdit)
                         .addComponent(jTextFieldPrecioEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonEditarPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jButtonGuardarCambios)
                 .addGap(16, 16, 16))
         );
 
         jPanelEditarMenu.add(jPanelCambios);
         jPanelCambios.setBounds(316, 98, 253, 254);
 
+        jButtonPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
         jButtonPrincipal.setText("MENU PRINCIPAL");
+        jButtonPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrincipalActionPerformed(evt);
             }
         });
         jPanelEditarMenu.add(jButtonPrincipal);
-        jButtonPrincipal.setBounds(400, 440, 170, 33);
+        jButtonPrincipal.setBounds(500, 410, 130, 70);
 
         jTableProductos = new javax.swing.JTable() {
             public boolean isCellEditable(int row, int column){

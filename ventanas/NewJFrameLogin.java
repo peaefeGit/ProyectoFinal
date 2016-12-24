@@ -33,6 +33,9 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         
         jTextFieldUsuario.setText(usr.getUser());
         jTextFieldUsuario.setEditable(false);
+        
+        jButtonLogin.setContentAreaFilled(false);
+        jButtonLogin.setBorderPainted(false);
     }
     public NewJFrameLogin(MySQL db) {
         this.db  = db;
@@ -40,6 +43,9 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Colibrí Arte y Cultura");
+        
+        jButtonLogin.setContentAreaFilled(false);
+        jButtonLogin.setBorderPainted(false);
     }
 
     /**
@@ -93,14 +99,16 @@ public class NewJFrameLogin extends javax.swing.JFrame {
         jPanelLogin.add(jTextFieldUsuario);
         jTextFieldUsuario.setBounds(100, 70, 150, 20);
 
-        jButtonLogin.setText("Ingresar");
+        jButtonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ingresar.png"))); // NOI18N
+        jButtonLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
             }
         });
         jPanelLogin.add(jButtonLogin);
-        jButtonLogin.setBounds(163, 170, 90, 23);
+        jButtonLogin.setBounds(200, 150, 50, 50);
 
         jLabelMontoApertura.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelMontoApertura.setForeground(new java.awt.Color(255, 255, 255));
