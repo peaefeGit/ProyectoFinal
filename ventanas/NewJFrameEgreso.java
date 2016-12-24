@@ -55,7 +55,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         jButtonMenuPrincipal = new javax.swing.JButton();
         jLabelProveedor = new javax.swing.JLabel();
         jComboBoxProveedor = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,13 +67,13 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
         jLabelDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDescripcion.setText("Descripcion: ");
         jPanelEgreso.add(jLabelDescripcion);
-        jLabelDescripcion.setBounds(30, 130, 80, 20);
+        jLabelDescripcion.setBounds(10, 100, 80, 30);
 
         jLabelMonto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelMonto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMonto.setText("Monto:        $ ");
         jPanelEgreso.add(jLabelMonto);
-        jLabelMonto.setBounds(37, 160, 80, 20);
+        jLabelMonto.setBounds(4, 134, 73, 14);
 
         jTextFieldDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -81,7 +81,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             }
         });
         jPanelEgreso.add(jTextFieldDescripcion);
-        jTextFieldDescripcion.setBounds(120, 130, 193, 20);
+        jTextFieldDescripcion.setBounds(81, 105, 193, 20);
 
         jTextFieldMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +94,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             }
         });
         jPanelEgreso.add(jTextFieldMonto);
-        jTextFieldMonto.setBounds(120, 160, 114, 20);
+        jTextFieldMonto.setBounds(81, 131, 114, 20);
 
         jButtonEgreso.setText("Cargar Pago");
         jButtonEgreso.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +103,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             }
         });
         jPanelEgreso.add(jButtonEgreso);
-        jButtonEgreso.setBounds(260, 200, 110, 23);
+        jButtonEgreso.setBounds(240, 200, 120, 23);
 
         jButtonMenuPrincipal.setText("Menú Principal");
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -112,31 +112,31 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             }
         });
         jPanelEgreso.add(jButtonMenuPrincipal);
-        jButtonMenuPrincipal.setBounds(110, 200, 134, 23);
+        jButtonMenuPrincipal.setBounds(100, 200, 134, 23);
 
         jLabelProveedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelProveedor.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProveedor.setText("Proveedor: ");
         jPanelEgreso.add(jLabelProveedor);
-        jLabelProveedor.setBounds(30, 100, 90, 20);
+        jLabelProveedor.setBounds(10, 76, 70, 20);
 
         jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quimica quillay", "rama", "vasco", "verduleria", "pollos", "mr pan", "huevos", "chino", "helado", "cafe bakan", "dallachiesa", "hielo 42", "la gran miga", "mauca", "mc cain", "nini", "papelera", "purre", "quilmes tolosa", "copete", "otros" }));
         jPanelEgreso.add(jComboBoxProveedor);
-        jComboBoxProveedor.setBounds(120, 100, 193, 20);
+        jComboBoxProveedor.setBounds(81, 79, 193, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
-        jPanelEgreso.add(jLabel1);
-        jLabel1.setBounds(0, 0, 390, 260);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proveedores.png"))); // NOI18N
+        jPanelEgreso.add(jLabel2);
+        jLabel2.setBounds(0, 0, 400, 260);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelEgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(jPanelEgreso, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
 
         pack();
@@ -268,7 +268,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEgreso;
     private javax.swing.JButton jButtonMenuPrincipal;
     private javax.swing.JComboBox<String> jComboBoxProveedor;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelMonto;
     private javax.swing.JLabel jLabelProveedor;

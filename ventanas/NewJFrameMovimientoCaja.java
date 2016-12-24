@@ -49,7 +49,6 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
 
         buttonGroupMovimiento = new javax.swing.ButtonGroup();
         jPanelMovCaja = new javax.swing.JPanel();
-        jLabelTitulo = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
         jTextFieldDescripcion = new javax.swing.JTextField();
         jLabelMonto = new javax.swing.JLabel();
@@ -62,16 +61,19 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         jButtonMenuPrincipal = new javax.swing.JButton();
         jRadioButtonDeposito = new javax.swing.JRadioButton();
         jRadioButtonExtraccion = new javax.swing.JRadioButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelMovCaja.setBackground(new java.awt.Color(109, 176, 248));
+        jPanelMovCaja.setBackground(new java.awt.Color(0, 0, 0));
         jPanelMovCaja.setForeground(new java.awt.Color(109, 176, 248));
+        jPanelMovCaja.setLayout(null);
 
-        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelTitulo.setText("Movimiento de Caja");
-
+        jLabelDescripcion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDescripcion.setText("Descripcion del movimiento");
+        jPanelMovCaja.add(jLabelDescripcion);
+        jLabelDescripcion.setBounds(10, 75, 156, 14);
 
         jTextFieldDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,14 +85,22 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jTextFieldDescripcionKeyTyped(evt);
             }
         });
+        jPanelMovCaja.add(jTextFieldDescripcion);
+        jTextFieldDescripcion.setBounds(181, 72, 220, 20);
 
+        jLabelMonto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelMonto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMonto.setText("Monto        $");
+        jPanelMovCaja.add(jLabelMonto);
+        jLabelMonto.setBounds(16, 132, 67, 14);
 
         jTextFieldMonto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldMontoKeyTyped(evt);
             }
         });
+        jPanelMovCaja.add(jTextFieldMonto);
+        jTextFieldMonto.setBounds(91, 129, 160, 20);
 
         jButtonMovimiento.setText("Realizar Movimiento");
         jButtonMovimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -98,22 +108,36 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jButtonMovimientoActionPerformed(evt);
             }
         });
+        jPanelMovCaja.add(jButtonMovimiento);
+        jButtonMovimiento.setBounds(240, 240, 150, 23);
 
+        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsuario.setText("Usuario");
+        jPanelMovCaja.add(jLabelUsuario);
+        jLabelUsuario.setBounds(16, 163, 70, 14);
 
         jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldUsuarioKeyTyped(evt);
             }
         });
+        jPanelMovCaja.add(jTextFieldUsuario);
+        jTextFieldUsuario.setBounds(93, 160, 160, 20);
 
+        jLabelPassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelPassword.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPassword.setText("Contraseña");
+        jPanelMovCaja.add(jLabelPassword);
+        jLabelPassword.setBounds(16, 194, 80, 14);
 
         jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jPasswordFieldKeyTyped(evt);
             }
         });
+        jPanelMovCaja.add(jPasswordField);
+        jPasswordField.setBounds(93, 191, 160, 20);
 
         jButtonMenuPrincipal.setText("Menu Principal");
         jButtonMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -121,104 +145,38 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                 jButtonMenuPrincipalActionPerformed(evt);
             }
         });
+        jPanelMovCaja.add(jButtonMenuPrincipal);
+        jButtonMenuPrincipal.setBounds(80, 240, 144, 23);
 
-        jRadioButtonDeposito.setBackground(new java.awt.Color(109, 176, 248));
+        jRadioButtonDeposito.setBackground(new java.awt.Color(106, 79, 72));
         buttonGroupMovimiento.add(jRadioButtonDeposito);
+        jRadioButtonDeposito.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonDeposito.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonDeposito.setText("Depósito");
+        jPanelMovCaja.add(jRadioButtonDeposito);
+        jRadioButtonDeposito.setBounds(16, 99, 100, 23);
 
-        jRadioButtonExtraccion.setBackground(new java.awt.Color(109, 176, 248));
+        jRadioButtonExtraccion.setBackground(new java.awt.Color(106, 79, 72));
         buttonGroupMovimiento.add(jRadioButtonExtraccion);
+        jRadioButtonExtraccion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonExtraccion.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonExtraccion.setText("Extracción");
+        jPanelMovCaja.add(jRadioButtonExtraccion);
+        jRadioButtonExtraccion.setBounds(150, 100, 110, 23);
 
-        javax.swing.GroupLayout jPanelMovCajaLayout = new javax.swing.GroupLayout(jPanelMovCaja);
-        jPanelMovCaja.setLayout(jPanelMovCajaLayout);
-        jPanelMovCajaLayout.setHorizontalGroup(
-            jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMovCajaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonMovimiento))
-                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                        .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                        .addComponent(jLabelDescripcion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabelMonto)
-                                                    .addComponent(jLabelUsuario))
-                                                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                                        .addGap(6, 6, 6)
-                                                        .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                                .addComponent(jLabelPassword)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                                .addComponent(jRadioButtonDeposito)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jRadioButtonExtraccion))))))
-                            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                                .addGap(112, 112, 112)
-                                .addComponent(jLabelTitulo)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanelMovCajaLayout.setVerticalGroup(
-            jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMovCajaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabelTitulo)
-                .addGap(35, 35, 35)
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDescripcion)
-                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonDeposito)
-                    .addComponent(jRadioButtonExtraccion))
-                .addGap(7, 7, 7)
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMonto)
-                    .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPassword)
-                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(jPanelMovCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonMovimiento)
-                    .addComponent(jButtonMenuPrincipal))
-                .addGap(42, 42, 42))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/movimientodecaja3.png"))); // NOI18N
+        jPanelMovCaja.add(jLabelFondo);
+        jLabelFondo.setBounds(0, 0, 420, 290);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMovCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -243,7 +201,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                          System.out.println(fecha);
                          if (jRadioButtonDeposito.isSelected()){
                             cajaActual.setMonto(cajaActual.getMonto() + mov);
-                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"##"+jTextFieldUsuario.getText());
+                            cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"#"+jTextFieldUsuario.getText());
                             JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
                             String responsable = jTextFieldUsuario.getText();
                              m = new Movimiento (mov, responsable, jTextFieldDescripcion.getText(), fecha, "", "Deposito");
@@ -384,9 +342,9 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMenuPrincipal;
     private javax.swing.JButton jButtonMovimiento;
     private javax.swing.JLabel jLabelDescripcion;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelMonto;
     private javax.swing.JLabel jLabelPassword;
-    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelMovCaja;
     private javax.swing.JPasswordField jPasswordField;

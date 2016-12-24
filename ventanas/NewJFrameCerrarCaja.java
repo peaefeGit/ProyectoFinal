@@ -98,7 +98,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jLabelTituloUsuarioA.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTituloUsuarioA.setText("Usuario Actual");
         jPanelCerrarCaja.add(jLabelTituloUsuarioA);
-        jLabelTituloUsuarioA.setBounds(100, 420, 140, 16);
+        jLabelTituloUsuarioA.setBounds(80, 420, 140, 16);
 
         jLabelUsuarioP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelUsuarioP.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,9 +154,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
 
         jLabelVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelVenta.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelVenta.setText("Ventas");
+        jLabelVenta.setText("Ventas / Ingresos");
         jPanelCerrarCaja.add(jLabelVenta);
-        jLabelVenta.setBounds(360, 90, 70, 15);
+        jLabelVenta.setBounds(360, 90, 140, 15);
 
         jLabelGasto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelGasto.setForeground(new java.awt.Color(255, 255, 255));
@@ -414,8 +414,8 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
             if (uProx && uActual){
                 ok = true;
             }else{
-                JOptionPane.showMessageDialog(null, "ERROR en nombre de usuario o contraseña");
-                }
+               JOptionPane.showMessageDialog(null, "ERROR en nombre de usuario o contraseña");
+            }      
         }else{
             JOptionPane.showMessageDialog(null, "ERROR falta confirmar proxima caja");
         }      

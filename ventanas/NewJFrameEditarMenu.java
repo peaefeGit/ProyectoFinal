@@ -64,7 +64,6 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jPanelEditarMenu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanelCambios = new javax.swing.JPanel();
         jLabelProdEdit = new javax.swing.JLabel();
         jLabelPrecioEdit = new javax.swing.JLabel();
@@ -73,10 +72,9 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
         jButtonGuardarCambios = new javax.swing.JButton();
         jButtonEditarPrecio = new javax.swing.JButton();
         jButtonPrincipal = new javax.swing.JButton();
-        jLabelProducto = new javax.swing.JLabel();
-        jTextFieldProducto = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableProductos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -86,12 +84,11 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelEditarMenu.setBackground(new java.awt.Color(109, 176, 248));
+        jPanelEditarMenu.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelEditarMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jPanelEditarMenu.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Editar Menu");
-
-        jPanelCambios.setBackground(new java.awt.Color(0, 204, 255));
+        jPanelCambios.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabelProdEdit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelProdEdit.setText("Producto: ");
@@ -127,9 +124,12 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
         jPanelCambios.setLayout(jPanelCambiosLayout);
         jPanelCambiosLayout.setHorizontalGroup(
             jPanelCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCambiosLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCambiosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelCambiosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCambiosLayout.createSequentialGroup()
                         .addGroup(jPanelCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelProdEdit)
@@ -140,11 +140,7 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
                             .addGroup(jPanelCambiosLayout.createSequentialGroup()
                                 .addComponent(jTextFieldPrecioEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonEditarPrecio)
-                                .addGap(0, 17, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCambiosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonEditarPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanelCambiosLayout.setVerticalGroup(
@@ -165,14 +161,17 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
+        jPanelEditarMenu.add(jPanelCambios);
+        jPanelCambios.setBounds(316, 98, 253, 254);
+
         jButtonPrincipal.setText("MENU PRINCIPAL");
         jButtonPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrincipalActionPerformed(evt);
             }
         });
-
-        jLabelProducto.setText("Buscar Productos");
+        jPanelEditarMenu.add(jButtonPrincipal);
+        jButtonPrincipal.setBounds(400, 440, 170, 33);
 
         jTableProductos = new javax.swing.JTable() {
             public boolean isCellEditable(int row, int column){
@@ -191,64 +190,26 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
         jTableProductos.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTableProductos);
 
-        javax.swing.GroupLayout jPanelEditarMenuLayout = new javax.swing.GroupLayout(jPanelEditarMenu);
-        jPanelEditarMenu.setLayout(jPanelEditarMenuLayout);
-        jPanelEditarMenuLayout.setHorizontalGroup(
-            jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                .addGroup(jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                                .addComponent(jLabelProducto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                                .addComponent(jButtonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(129, 129, 129))
-                            .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanelCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(26, 26, 26))
-        );
-        jPanelEditarMenuLayout.setVerticalGroup(
-            jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addGroup(jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelProducto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelEditarMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(16, Short.MAX_VALUE))
-                    .addGroup(jPanelEditarMenuLayout.createSequentialGroup()
-                        .addComponent(jPanelCambios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))))
-        );
+        jPanelEditarMenu.add(jScrollPane2);
+        jScrollPane2.setBounds(45, 98, 253, 402);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editarmenu.png"))); // NOI18N
+        jPanelEditarMenu.add(jLabel1);
+        jLabel1.setBounds(-90, 0, 800, 520);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelEditarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelEditarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelEditarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelEditarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -350,7 +311,6 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPrecioEdit;
     private javax.swing.JLabel jLabelProdEdit;
-    private javax.swing.JLabel jLabelProducto;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -360,6 +320,5 @@ public class NewJFrameEditarMenu extends javax.swing.JFrame {
     private javax.swing.JTable jTableProductos;
     private javax.swing.JTextField jTextFieldPrecioEdit;
     private javax.swing.JTextField jTextFieldProdEdit;
-    private javax.swing.JTextField jTextFieldProducto;
     // End of variables declaration//GEN-END:variables
 }
