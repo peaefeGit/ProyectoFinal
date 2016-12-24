@@ -210,15 +210,7 @@ public class MySQL {
         
     }
     
-     public void guardarCuenta(Cuenta c){
-       try{  
-            Statement stmt = Conexion.createStatement();
-            stmt.executeUpdate("INSERT INTO ventas(fecha, monto, descripcion)"+"VALUES ('"+c.getFecha()+"','"+c.getMonto()+"','"+c.getDescripcion()+"')");
-      } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
-      }      
-       
-    }
+    
     
      public void guardarMovimiento(Movimiento m){
          try{
@@ -241,4 +233,16 @@ public class MySQL {
             JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
         }
     }
+     
+    
+     public void guardarCaja(Caja c){         
+         try {
+             Statement stmt = Conexion.createStatement();
+             //stmt.executeUpdate("INSERT INTO cajas (montoApertura, monto, fecha)"+"VALUES ('"+c.getMontoApertura()"','"+c.getMonto()+"','"+c.getFecha()+"')";
+             
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+        }
+     
+     }
 }

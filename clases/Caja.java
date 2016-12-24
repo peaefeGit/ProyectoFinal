@@ -14,6 +14,7 @@ public class Caja {
     private ArrayList<String> movimiento;//"+"descripcionDeposito"##"jTextFieldNombreUsuario ** "-"descripcionExtraccion"##"jTextFieldNombreUsuario
     private Double monto;
     private Usuario user;
+    private Date fecha;
 
     public Caja(Double montoApertura, Usuario user){
         this.montoApertura = montoApertura;

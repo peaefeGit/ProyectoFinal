@@ -7,6 +7,7 @@ package ventanas;
 
 import clases.Caja;
 import clases.Cuenta;
+import clases.Movimiento;
 import clases.MySQL;
 import clases.Producto;
 import java.awt.Color;
@@ -32,6 +33,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private Caja cajaActual;
     private String ultimoBoton = "prueba";
     private Double total;
+    private Movimiento m;
     //traje la caja hasta aca solamente. falta sumar precios de productos en la cuenta
     
     public NewJFrameMesa(NewJFramePrincipal principal, MySQL db, JButton btn, Caja cajaA) {
@@ -502,18 +504,17 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuPrincipalActionPerformed
 
     private void jButtonCerrarCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseEntered
-        // TODO add your handling code here:
-        
+    
         //lo hice al pedo!
     }//GEN-LAST:event_jButtonCerrarCuentaMouseEntered
 
     private void jButtonCerrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCerrarCuentaMouseClicked
-        int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
+       int eleccion = JOptionPane.showConfirmDialog(null,jLabelTotal.getText()+jTextFieldTotal.getText(), " CERRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
        if (eleccion == JOptionPane.YES_OPTION){
-           Date fecha = new Date();
-           java.sql.Date fechasql = new java.sql.Date(fecha.getTime());
-           Cuenta c = new Cuenta(total, fechasql,"");
-           db.guardarCuenta(c);
+           Date d = new Date();
+           java.sql.Date fecha = new java.sql.Date(d.getTime());
+           m = new Movimiento (total, cajaActual.getUser().getUser(), "", fecha, "", "Venta");
+           db.guardarMovimiento(m);
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);
@@ -574,8 +575,9 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBorrarMouseClicked
 
     private void jButtonBorrarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarCuentaMouseClicked
-       int eleccion = JOptionPane.showConfirmDialog(null,"¿ DESEA ELIMINAR LA CUENTA ? ", " BORRAR CUENTA ", JOptionPane.WARNING_MESSAGE);
+       int eleccion = JOptionPane.showConfirmDialog(null,"¿ DESEA ELIMINAR LA CUENTA ? ", " BORRAR CUENTA ", JOptionPane.WARNING_MESSAGE);     
        if (eleccion == JOptionPane.YES_OPTION){
+           
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
            this.principal.getMesas().remove(btn);
