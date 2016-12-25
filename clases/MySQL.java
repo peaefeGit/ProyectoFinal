@@ -234,6 +234,16 @@ public class MySQL {
         }
     }
      
+     public void guardarMovProd(int idMov, int idProd){
+          try {
+             Statement stmt = Conexion.createStatement();
+             stmt.executeUpdate("INSERT INTO productomovimiento(producto, movimiento)"+"VALUES ('"+idProd+"','"+idMov+"')");
+             
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+        }
+     }
+     
     
      public void guardarCaja(Caja c){         
          try {
@@ -249,6 +259,20 @@ public class MySQL {
      public int recuperarIdCaja(){
           try {
             String Query = "SELECT MAX(idCaja) as id from cajas";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            rs.next();
+            int i = rs.getInt("id");
+            return i;
+            } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
+            return -1;
+        }
+     }
+     
+     public int recuperarIdMov(){
+          try {
+            String Query = "SELECT MAX(idMovimiento) as id from movimientos";
             Statement stmt = Conexion.createStatement();
             ResultSet rs = stmt.executeQuery(Query);
             rs.next();

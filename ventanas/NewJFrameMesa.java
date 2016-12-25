@@ -38,6 +38,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private String ultimoBoton = "prueba";
     private Double total;
     private Movimiento m;
+    private ArrayList<Producto> prodList = new ArrayList<Producto>();
     //traje la caja hasta aca solamente. falta sumar precios de productos en la cuenta
     
     public NewJFrameMesa(NewJFramePrincipal principal, MySQL db, JButton btn, Caja cajaA) {
@@ -520,6 +521,11 @@ public class NewJFrameMesa extends javax.swing.JFrame {
            
            m = new Movimiento (total, cajaActual.getUser().getUser(), "", fecha, "", "Venta");
            db.guardarMovimiento(m);
+           int idMov = db.recuperarIdMov();
+           for (int i = 0; i < prodList.size(); i++){
+               db.guardarMovProd(idMov, prodList.get(i).getIdProducto());
+           }
+           
            this.cajaActual.setMonto(this.cajaActual.getMonto()+ total);
            this.btn.setBackground(Color.green);
            this.principal.setVisible(true);
@@ -545,12 +551,14 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         if (jListPlato.isSelectionEmpty()){
             jButtonPlato.disable();
         }else{
-           String opcion = jListPlato.getSelectedValue();
-        //System.out.println(opcion);
+        String opcion = jListPlato.getSelectedValue();
+        System.out.println(opcion);
         Producto p = db.getProducto(opcion);
+        System.out.println(p.getIdProducto());
+        prodList.add(p);
         total = total + p.getPrecio();
         jTextFieldTotal.setText(total.toString() );
-        //System.out.println(p.toString());
+       
         
         DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
         Object[] row = new Object[3];
@@ -575,7 +583,10 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     private void jButtonBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBorrarMouseClicked
     try{    
         int i = jTableCuenta.getSelectedRow();
-        
+        String opcion = jTableCuenta.getModel().getValueAt(i,0).toString();
+        System.out.println(opcion);
+        Producto p = db.getProducto(opcion);       
+        prodList.remove(i);
         DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
         total = total - (float) jTableCuenta.getValueAt(i, 2);
         jTextFieldTotal.setText(total.toString());
