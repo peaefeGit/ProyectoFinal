@@ -469,8 +469,7 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
                 Double prox = Double.parseDouble(t);
                 Caja c = new Caja(prox, usr, fecha);
                 bd.guardarCaja(c);
-                Usuario us = new Usuario (jTextFieldUsuarioP.getText(), jPasswordFieldUsuarioP.getText());
-                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox, us);//esto no ANDA!
+                NewJFrameLogin cc = new NewJFrameLogin(this.bd, prox, jTextFieldUsuarioP.getText() );
                 cc.setVisible(true);
                 this.dispose();
             }else if (eleccion == JOptionPane.NO_OPTION){

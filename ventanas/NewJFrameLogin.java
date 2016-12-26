@@ -21,17 +21,18 @@ public class NewJFrameLogin extends javax.swing.JFrame {
     private Caja cajaA;
     private MySQL db;
     
-    public NewJFrameLogin(MySQL db, Double montoInicial, Usuario usr){
+    public NewJFrameLogin(MySQL db, Double montoInicial, String user){
         this.db  = db;
-        this.cajaA.setUsuario(usr);
         initComponents();
+        setDefaultCloseOperation(0);//anula la CRUZ exit
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Colibrí Arte y Cultura");
+        
         jTextFieldMontoApertura.setText(montoInicial.toString());
         jTextFieldMontoApertura.setEditable(false);
         
-        jTextFieldUsuario.setText(usr.getUser());
+        jTextFieldUsuario.setText(user);
         jTextFieldUsuario.setEditable(false);
         
         jButtonLogin.setContentAreaFilled(false);
@@ -173,7 +174,6 @@ public class NewJFrameLogin extends javax.swing.JFrame {
          java.util.Date dt = new java.util.Date();
          java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");       
          String fecha = sdf.format(dt);
-         System.out.println(fecha);
          this.cajaA = new Caja(f, logueado, fecha);
          db.guardarCaja(cajaA);
          int id = db.recuperarIdCaja();

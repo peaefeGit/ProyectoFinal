@@ -38,6 +38,9 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         
         jButtonPrincipal.setContentAreaFilled(false);
         jButtonPrincipal.setBorderPainted(false);
+        
+        jButtonDetalles.setContentAreaFilled(false);
+        jButtonDetalles.setBorderPainted(false);
     }
 
     /**
@@ -57,7 +60,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jTextFieldApertura = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMov = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jButtonDetalles = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +73,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jLabelAperturaCaja.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAperturaCaja.setText("Apertura de caja");
         jPanelCaja.add(jLabelAperturaCaja);
-        jLabelAperturaCaja.setBounds(10, 20, 140, 15);
+        jLabelAperturaCaja.setBounds(10, 40, 140, 15);
 
         jLabelGasto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelGasto.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,7 +81,10 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jPanelCaja.add(jLabelGasto);
         jLabelGasto.setBounds(150, 90, 130, 15);
 
-        jButtonPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
+        jButtonPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal32x32(3).png"))); // NOI18N
+        jButtonPrincipal.setText("Menu Principal");
         jButtonPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -87,15 +93,15 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
             }
         });
         jPanelCaja.add(jButtonPrincipal);
-        jButtonPrincipal.setBounds(310, 340, 70, 60);
+        jButtonPrincipal.setBounds(290, 330, 130, 60);
 
         jLabelTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTotal.setText("Total Parcial: $");
+        jLabelTotal.setText("Total : $");
         jPanelCaja.add(jLabelTotal);
-        jLabelTotal.setBounds(20, 360, 170, 15);
+        jLabelTotal.setBounds(10, 340, 160, 15);
         jPanelCaja.add(jTextFieldApertura);
-        jTextFieldApertura.setBounds(10, 40, 130, 28);
+        jTextFieldApertura.setBounds(10, 60, 130, 28);
 
         jTableMov = new javax.swing.JTable() {
             public boolean isCellEditable(int row, int column){
@@ -113,16 +119,21 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableMov);
 
         jPanelCaja.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 110, 400, 220);
+        jScrollPane1.setBounds(10, 110, 400, 210);
 
-        jButton1.setText("Ver detalle");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDetalles.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonDetalles.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        jButtonDetalles.setText("Ver Detalle");
+        jButtonDetalles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonDetalles.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonDetallesActionPerformed(evt);
             }
         });
-        jPanelCaja.add(jButton1);
-        jButton1.setBounds(200, 340, 100, 40);
+        jPanelCaja.add(jButtonDetalles);
+        jButtonDetalles.setBounds(170, 330, 120, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja2.png"))); // NOI18N
         jPanelCaja.add(jLabel1);
@@ -147,7 +158,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_jButtonPrincipalActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetallesActionPerformed
         int row = jTableMov.getSelectedRow();        
         String tipo = jTableMov.getModel().getValueAt(row,1).toString();
         if (tipo.equals("Venta")){
@@ -158,7 +169,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
             NewJFrameDetalleVenta v = new NewJFrameDetalleVenta(lista, db);
             v.setVisible(true);            
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonDetallesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +207,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonDetalles;
     private javax.swing.JButton jButtonPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAperturaCaja;

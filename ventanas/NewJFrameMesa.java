@@ -11,6 +11,8 @@ import clases.Movimiento;
 import clases.MySQL;
 import clases.Producto;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -144,11 +146,45 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jPanelMesa.add(jTextFieldIngrediente);
         jTextFieldIngrediente.setBounds(416, 110, 125, 20);
 
+        jListPlato.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if(evt.getClickCount()==2){
+                    String opcion = jListPlato.getSelectedValue();
+                    Producto p = db.getProducto(opcion);//FALTA DEFINICION
+                    total = total + p.getPrecio();
+                    jTextFieldTotal.setText(total.toString() );
+                    DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+                    Object[] row = new Object[3];
+                    row[0] = p.getNombre();
+                    row[1] =  1;
+                    row[2] =  p.getPrecio();
+                    model.addRow(row);
+                    jTableCuenta.setModel(model);
+                }
+            }
+        });
         jScrollPanePlato.setViewportView(jListPlato);
 
         jPanelMesa.add(jScrollPanePlato);
         jScrollPanePlato.setBounds(269, 144, 137, 183);
 
+        jListIngrediente.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if(evt.getClickCount()==2){
+                    String opcion = jListIngrediente.getSelectedValue();
+                    Producto p = db.getProducto(opcion);//FALTA DEFINICION
+                    total = total + p.getPrecio();
+                    jTextFieldTotal.setText(total.toString() );
+                    DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();
+                    Object[] row = new Object[3];
+                    row[0] = p.getNombre();
+                    row[1] =  1;
+                    row[2] =  p.getPrecio();
+                    model.addRow(row);
+                    jTableCuenta.setModel(model);
+                }
+            }
+        });
         jScrollPaneIngrediente.setViewportView(jListIngrediente);
 
         jPanelMesa.add(jScrollPaneIngrediente);
@@ -183,7 +219,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jLabelPlato.setBounds(269, 90, 60, 14);
 
         jLabelIngrediente.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelIngrediente.setText("Buscar Ingrediente");
+        jLabelIngrediente.setText("Buscar");
         jPanelMesa.add(jLabelIngrediente);
         jLabelIngrediente.setBounds(416, 90, 120, 14);
 
@@ -284,7 +320,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         jTextFieldMesa.setText(this.btn.getText());
         jTextFieldMesa.setEditable(false);
         jPanelMesa.add(jTextFieldMesa);
-        jTextFieldMesa.setBounds(409, 11, 135, 20);
+        jTextFieldMesa.setBounds(409, 11, 180, 20);
 
         jCheckBoxMesa.setSelected(true);
         jCheckBoxMesa.setBackground(new java.awt.Color(0, 0, 0));
@@ -295,7 +331,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
             }
         });
         jPanelMesa.add(jCheckBoxMesa);
-        jCheckBoxMesa.setBounds(546, 11, 21, 21);
+        jCheckBoxMesa.setBounds(590, 10, 21, 21);
 
         jButtonMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
@@ -420,7 +456,7 @@ public class NewJFrameMesa extends javax.swing.JFrame {
 
         jButtonFritas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonFritas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fritas.jpg"))); // NOI18N
-        jButtonFritas.setText("Papas fritas");
+        jButtonFritas.setText("Papa fritas");
         jButtonFritas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonFritas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonFritas.addActionListener(new java.awt.event.ActionListener() {
@@ -734,6 +770,8 @@ public class NewJFrameMesa extends javax.swing.JFrame {
         
     }    
     }//GEN-LAST:event_jButtonDescuentoActionPerformed
+
+
 
     /**
      * @param args the command line arguments

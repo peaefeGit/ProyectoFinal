@@ -81,6 +81,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jListPlato.addMouseListener(new MouseAdapter() {&#xa;    public void mouseClicked(MouseEvent evt) {&#xa;        if(evt.getClickCount()==2){&#xa;            String opcion = jListPlato.getSelectedValue();&#xa;            Producto p = db.getProducto(opcion);//FALTA DEFINICION&#xa;            total = total + p.getPrecio();&#xa;            jTextFieldTotal.setText(total.toString() );&#xa;            DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();&#xa;            Object[] row = new Object[3];&#xa;            row[0] = p.getNombre();&#xa;            row[1] =  1;&#xa;            row[2] =  p.getPrecio();&#xa;            model.addRow(row);&#xa;            jTableCuenta.setModel(model); &#xa;        }    &#xa;    }&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -105,6 +106,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jListIngrediente.addMouseListener(new MouseAdapter() {&#xa;    public void mouseClicked(MouseEvent evt) {&#xa;        if(evt.getClickCount()==2){&#xa;            String opcion = jListIngrediente.getSelectedValue();&#xa;            Producto p = db.getProducto(opcion);//FALTA DEFINICION&#xa;            total = total + p.getPrecio();&#xa;            jTextFieldTotal.setText(total.toString() );&#xa;            DefaultTableModel model = (DefaultTableModel) jTableCuenta.getModel();&#xa;            Object[] row = new Object[3];&#xa;            row[0] = p.getNombre();&#xa;            row[1] =  1;&#xa;            row[2] =  p.getPrecio();&#xa;            model.addRow(row);&#xa;            jTableCuenta.setModel(model); &#xa;        }    &#xa;    }&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -159,7 +161,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar Ingrediente"/>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -355,7 +357,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="409" y="11" width="135" height="-1"/>
+              <AbsoluteConstraints x="409" y="11" width="180" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -376,7 +378,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="546" y="11" width="-1" height="-1"/>
+              <AbsoluteConstraints x="590" y="10" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -587,7 +589,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/fritas.jpg"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Papas fritas"/>
+            <Property name="text" type="java.lang.String" value="Papa fritas"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
