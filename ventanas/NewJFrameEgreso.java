@@ -175,7 +175,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
             //java.sql.Date fecha = new java.sql.Date(d.getTime());
             
             java.util.Date dt = new java.util.Date();
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
             String fecha = sdf.format(dt);
            
             if (eleccion == JOptionPane.YES_OPTION){
@@ -183,7 +183,7 @@ public class NewJFrameEgreso extends javax.swing.JFrame {
                 Double egreso = Double.parseDouble(pago);
                 cajaActual.setMonto(cajaActual.getMonto() - egreso);
                 cajaActual.getEgreso().add(jComboBoxProveedor.getSelectedItem()+"#"+jTextFieldDescripcion.getText()+"#"+jTextFieldMonto.getText());                
-                m = new Movimiento(egreso, cajaActual.getUser().getUser(), jTextFieldDescripcion.getText(), fecha, jComboBoxProveedor.getSelectedItem().toString(), "Extraccion");
+                m = new Movimiento(egreso, cajaActual.getUser().getUser(), jTextFieldDescripcion.getText(), fecha, jComboBoxProveedor.getSelectedItem().toString(), "Extraccion", cajaActual.getIdCaja());
                 db.guardarMovimiento(m);
                 JOptionPane.showMessageDialog(null, " PAGO REALIZADO ");
                 jTextFieldMonto.setText("");

@@ -26,10 +26,12 @@ public class NewJFramePrincipal extends javax.swing.JFrame {
     private Caja cajaActual;
     
     public NewJFramePrincipal(MySQL db, Caja cajaA) {
-        this.cajaActual = cajaA;
+       
+        initComponents();
+        this.cajaActual = cajaA;        
         this.mesas = new Hashtable<JButton, NewJFrameMesa>();
         this.db = db;
-        initComponents();
+        System.out.println(cajaActual.getIdCaja());
         setLocationRelativeTo(null);
         setResizable(false);
         //setDefaultCloseOperation(0);//anula la CRUZ exit

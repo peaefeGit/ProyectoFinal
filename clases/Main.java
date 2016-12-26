@@ -25,6 +25,8 @@ public class Main {
         
         MySQL db = new MySQL(); 
         db.MySQLConnection("root", "", "/proyecto_colibri");       
+        Producto p = db.getProdById(1);
+        System.out.println(p.getNombre());
         
         
         NewJFrameLogin ventana = new NewJFrameLogin(db);

@@ -20,17 +20,19 @@ public class Movimiento {
     private String fecha;
     private String proveedor;
     private String tipo;
+    private int caja;
     
    
 
     
-    public Movimiento(double monto, String responsable, String descripcion , String fecha, String proveedor, String tipo) {
+    public Movimiento(double monto, String responsable, String descripcion , String fecha, String proveedor, String tipo, int caja) {
         this.monto = monto;
         this.responsable = responsable;
         this.proveedor = proveedor;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.tipo = tipo;
+        this.caja = caja;
     }
     
    
@@ -90,6 +92,16 @@ public class Movimiento {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public int getCaja() {
+        return caja;
+    }
+
+    public void setCaja(int caja) {
+        this.caja = caja;
+    }
+    
+    
     
     
 }

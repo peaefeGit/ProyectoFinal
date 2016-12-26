@@ -43,12 +43,12 @@ public class NewJFrameMesa extends javax.swing.JFrame {
     
     public NewJFrameMesa(NewJFramePrincipal principal, MySQL db, JButton btn, Caja cajaA) {
         this.cajaActual= cajaA;
+        System.out.println(cajaActual.getIdCaja());
         this.btn = btn;
         this.db = db;
-        this.principal = principal;
-        
+        this.principal = principal;        
         this.total = 0.0;
-        initComponents();
+        initComponents();        
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(0);//anula la CRUZ exit
@@ -516,10 +516,9 @@ public class NewJFrameMesa extends javax.swing.JFrame {
            
            java.util.Date dt = new java.util.Date();
            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
-           String fecha = sdf.format(dt);
+           String fecha = sdf.format(dt);         
            
-           
-           m = new Movimiento (total, cajaActual.getUser().getUser(), "", fecha, "", "Venta");
+           m = new Movimiento (total, cajaActual.getUser().getUser(), "", fecha, "", "Venta", cajaActual.getIdCaja());
            db.guardarMovimiento(m);
            int idMov = db.recuperarIdMov();
            for (int i = 0; i < prodList.size(); i++){

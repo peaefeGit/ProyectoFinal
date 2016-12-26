@@ -210,13 +210,32 @@ public class MySQL {
         
     }
     
+     public Producto getProdById(int id) {
+        try {
+            String Query = "SELECT * FROM productos WHERE idProducto = '"+id+"'";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            rs.next();
+            Producto p = new Producto(rs.getInt("idProducto"),
+                    rs.getInt("categoria"),
+                    rs.getString("nombre"),
+                    rs.getFloat("precio"));
+            return p;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "algun error"+e);
+            return null;
+        }
+        
+    }
+    
     
     
      public void guardarMovimiento(Movimiento m){
          try{
              
             Statement stmt = Conexion.createStatement();
-            stmt.executeUpdate("INSERT INTO movimientos(monto, responsable, descripcion, fecha, proveedor, tipo)"+"VALUES ('"+m.getMonto()+"','"+m.getResponsable()+"','"+m.getDescripcion()+"','"+m.getFecha()+"','"+m.getProveedor()+"','"+m.getTipo()+"')");
+            stmt.executeUpdate("INSERT INTO movimientos(monto, responsable, descripcion, fecha, proveedor, tipo, caja)"+"VALUES ('"+m.getMonto()+"','"+m.getResponsable()+"','"+m.getDescripcion()+"','"+m.getFecha()+"','"+m.getProveedor()+"','"+m.getTipo()+"','"+m.getCaja()+"')");
             
          } catch(Exception e) {
           JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
@@ -248,7 +267,7 @@ public class MySQL {
      public void guardarCaja(Caja c){         
          try {
              Statement stmt = Conexion.createStatement();
-             //stmt.executeUpdate("INSERT INTO cajas (montoApertura, monto, fecha)"+"VALUES ('"+c.getMontoApertura()"','"+c.getMonto()+"','"+c.getFecha()+"')";
+             stmt.executeUpdate("INSERT INTO cajas (montoApertura, monto, fecha)"+"VALUES ('"+c.getMontoApertura()+"','"+c.getMonto()+"','"+c.getFecha()+"')");
              
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error en la adquisicion de datos"+e); 
@@ -297,6 +316,7 @@ public class MySQL {
      
      public void ultimosMovs (JTable tabla) {
         try {
+            
             String Query = "SELECT * FROM productos";
             Statement stmt = Conexion.createStatement();
             ResultSet rs = stmt.executeQuery(Query);
@@ -315,4 +335,92 @@ public class MySQL {
             JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
         } 
     }
+     
+     public void mostrarIngresosCaja(JTable tabla, int idCaja){
+         try {
+           
+            String Query = "SELECT *, DATE_FORMAT(fecha,'%d/%m/%Y %H:%i' ) AS date FROM movimientos WHERE caja ='"+idCaja+"' AND tipo <> 'Extraccion'";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            Object[] row = new Object[4];
+           
+            while (rs.next()) {
+                row[0] = rs.getDouble("monto");
+                row[1] = rs.getString("responsable");
+                row[2] = rs.getString("date");
+                row[3] = rs.getString("tipo");
+                model.addRow(row);                
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+        } 
+         
+     }
+     
+     public void mostrarGastosCaja(JTable tabla, int idCaja){
+         try {       
+           
+            String Query = "SELECT *, DATE_FORMAT(fecha,'%d/%m/%Y %H:%i') AS date  FROM movimientos WHERE caja ='"+idCaja+"' AND tipo = 'Extraccion'";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            Object[] row = new Object[4];
+           
+            while (rs.next()) {
+                row[0] = rs.getDouble("monto");
+                row[1] = rs.getString("responsable");
+                row[2] = rs.getString("date");
+                row[3] = rs.getString("proveedor");
+                model.addRow(row);                
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+        } 
+         
+     }
+     
+      public void mostrarCaja(JTable tabla, int idCaja){
+         try {       
+           
+            String Query = "SELECT *, DATE_FORMAT(fecha,'%d/%m/%Y %H:%i') AS date  FROM movimientos WHERE caja ='"+idCaja+"'";
+            Statement stmt = Conexion.createStatement();
+            ResultSet rs = stmt.executeQuery(Query);
+            
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+            Object[] row = new Object[5];
+           
+            while (rs.next()) {
+                row[0] = rs.getInt("idMovimiento");
+                row[1] = rs.getString("tipo");
+                row[2] = rs.getDouble("monto");
+                row[3] = rs.getString("responsable");
+                row[4] = rs.getString("date");
+                model.addRow(row);                
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+        } 
+         
+     }
+      
+     public ArrayList<Integer> mostrarMovProd(int idMov){
+         try{
+         ArrayList<Integer> listaProductos = new ArrayList<Integer>();
+         String Query = "SELECT * FROM productomovimiento WHERE movimiento = '"+idMov+"'";
+         Statement stmt = Conexion.createStatement();
+         ResultSet rs = stmt.executeQuery(Query);         
+         while (rs.next()){
+             System.out.println("***********"+rs.getInt("producto"));
+             listaProductos.add(rs.getInt("producto"));
+         }
+         return listaProductos;
+            } catch(SQLException e) {
+         JOptionPane.showMessageDialog(null, "error en la adquisicion de datos " + e);
+         return null;
+     }
+     }
+    
 }

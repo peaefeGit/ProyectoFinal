@@ -15,9 +15,9 @@ public class Caja {
     private ArrayList<String> movimiento;//"+"descripcionDeposito"##"jTextFieldNombreUsuario ** "-"descripcionExtraccion"##"jTextFieldNombreUsuario
     private Double monto;
     private Usuario user;
-    private Date fecha;
+    private String fecha;
 
-    public Caja(Double montoApertura, Usuario user, Date fecha){
+    public Caja(Double montoApertura, Usuario user, String fecha){
         this.montoApertura = montoApertura;
         this.movimiento = new ArrayList();
         this.egreso = new ArrayList();
@@ -27,7 +27,7 @@ public class Caja {
         
     }
     
-    public Caja(Double montoApertura, Double monto, Date fecha){
+    public Caja(Double montoApertura, Double monto, String fecha){
         this.montoApertura = montoApertura;
         this.monto= montoApertura;
         this.fecha = fecha;
@@ -74,11 +74,11 @@ public class Caja {
         this.idCaja = idCaja;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }

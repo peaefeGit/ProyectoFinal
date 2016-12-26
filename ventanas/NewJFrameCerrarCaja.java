@@ -18,8 +18,11 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
      
     public NewJFrameCerrarCaja(NewJFramePrincipal principal, Caja cajaA, MySQL bd) {
         this.bd = bd;
-        this.cajaActual = cajaA;
+        this.cajaActual = cajaA;       
         initComponents();
+        bd.mostrarIngresosCaja(jTableIngresos, cajaActual.getIdCaja());
+        bd.mostrarGastosCaja(jTableGastos, cajaActual.getIdCaja());
+        
         this.principal = principal;
         setLocationRelativeTo(null);
         setResizable(false);
@@ -50,13 +53,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jLabelPasswordP = new javax.swing.JLabel();
         jLabelTituloUsuarioP = new javax.swing.JLabel();
         jButtonCerrarCaja = new javax.swing.JButton();
-        jScrollPaneVenta = new javax.swing.JScrollPane();
-        jListVenta = new javax.swing.JList<>();
         jLabelAperturaCaja = new javax.swing.JLabel();
         jLabelVenta = new javax.swing.JLabel();
         jLabelGasto = new javax.swing.JLabel();
-        jScrollPaneGasto = new javax.swing.JScrollPane();
-        jListGasto = new javax.swing.JList<>();
         jPasswordFieldActual = new javax.swing.JPasswordField();
         jPasswordFieldUsuarioP = new javax.swing.JPasswordField();
         jButtonMenuPrincipal = new javax.swing.JButton();
@@ -71,6 +70,10 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jButtonConfirmar = new javax.swing.JButton();
         jTextAperturaCaja = new javax.swing.JTextField();
         jLabelUsuario = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableGastos = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableIngresos = new javax.swing.JTable();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,11 +153,6 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jPanelCerrarCaja.add(jButtonCerrarCaja);
         jButtonCerrarCaja.setBounds(530, 620, 100, 60);
 
-        jScrollPaneVenta.setViewportView(jListVenta);
-
-        jPanelCerrarCaja.add(jScrollPaneVenta);
-        jScrollPaneVenta.setBounds(360, 110, 261, 270);
-
         jLabelAperturaCaja.setBackground(new java.awt.Color(0, 0, 0));
         jLabelAperturaCaja.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelAperturaCaja.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,18 +164,13 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jLabelVenta.setForeground(new java.awt.Color(255, 255, 255));
         jLabelVenta.setText("Ventas / Ingresos");
         jPanelCerrarCaja.add(jLabelVenta);
-        jLabelVenta.setBounds(360, 90, 140, 15);
+        jLabelVenta.setBounds(370, 90, 140, 15);
 
         jLabelGasto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelGasto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelGasto.setText("Gastos / Egresos");
         jPanelCerrarCaja.add(jLabelGasto);
         jLabelGasto.setBounds(10, 160, 140, 15);
-
-        jScrollPaneGasto.setViewportView(jListGasto);
-
-        jPanelCerrarCaja.add(jScrollPaneGasto);
-        jScrollPaneGasto.setBounds(10, 180, 253, 200);
 
         jPasswordFieldActual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -319,6 +312,32 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         jPanelCerrarCaja.add(jLabelUsuario);
         jLabelUsuario.setBounds(530, 60, 120, 17);
 
+        jTableGastos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Monto", "Responsable", "Fecha", "Proveedor"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableGastos);
+
+        jPanelCerrarCaja.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 190, 350, 220);
+
+        jTableIngresos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Monto", "Responsable", "Fecha", "Tipo"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableIngresos);
+
+        jPanelCerrarCaja.add(jScrollPane2);
+        jScrollPane2.setBounds(370, 110, 300, 300);
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarcaja3.png"))); // NOI18N
         jPanelCerrarCaja.add(jLabelFondo);
         jLabelFondo.setBounds(0, 0, 674, 680);
@@ -438,9 +457,9 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
         }      
        //si caja cerrada exitosamente
        if (ok){
-            java.util.Date fecha = new java.util.Date();
-            //java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
-            //String fecha = sdf.format(dt);  // ACA!!!!!!!!!!!!!!!!!!!!!!
+            java.util.Date dt = new java.util.Date();
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String fecha = sdf.format(dt);
             Usuario usr = new Usuario(jTextFieldUsuarioP.getText(), jPasswordFieldUsuarioP.getText());
             
             int eleccion = JOptionPane.showConfirmDialog(null," CAJA CERRADA EXITOSAMENTE - desea abrir una nueva caja?", " CERRAR CAJA ", JOptionPane.INFORMATION_MESSAGE);
@@ -541,14 +560,14 @@ public class NewJFrameCerrarCaja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUsuarioA;
     private javax.swing.JLabel jLabelUsuarioP;
     private javax.swing.JLabel jLabelVenta;
-    private javax.swing.JList<String> jListGasto;
-    private javax.swing.JList<String> jListVenta;
     private javax.swing.JPanel jPanelCerrarCaja;
     private javax.swing.JPanel jPanelProxCaja;
     private javax.swing.JPasswordField jPasswordFieldActual;
     private javax.swing.JPasswordField jPasswordFieldUsuarioP;
-    private javax.swing.JScrollPane jScrollPaneGasto;
-    private javax.swing.JScrollPane jScrollPaneVenta;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableGastos;
+    private javax.swing.JTable jTableIngresos;
     private javax.swing.JTextField jTextAperturaCaja;
     private javax.swing.JTextField jTextFieldExtraProxCaja;
     private javax.swing.JTextField jTextFieldProxCaja;

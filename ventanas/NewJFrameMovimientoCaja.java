@@ -220,7 +220,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                             cajaActual.getMovimiento().add("+"+jTextFieldDescripcion.getText()+"#"+jTextFieldUsuario.getText());
                             JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
                             String responsable = jTextFieldUsuario.getText();
-                             m = new Movimiento (mov, responsable, jTextFieldDescripcion.getText(), fecha, "", "Deposito");
+                             m = new Movimiento (mov, responsable, jTextFieldDescripcion.getText(), fecha, "", "Deposito", cajaActual.getIdCaja());
                              System.out.println(responsable);
                              db.guardarMovimiento(m); 
                             jTextFieldMonto.setText("");
@@ -234,7 +234,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
                             cajaActual.getMovimiento().add("-"+jTextFieldDescripcion.getText()+""
                                     + "#"+jTextFieldUsuario.getText());
                             JOptionPane.showMessageDialog(null, " MOVIMIENTO REALIZADO ");
-                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Extraccion");
+                             m = new Movimiento (mov, jTextFieldUsuario.getText(), jTextFieldDescripcion.getText(), fecha, "", "Extraccion", cajaActual.getIdCaja());
                              db.guardarMovimiento(m);
                              jTextFieldMonto.setText("");
                              jTextFieldDescripcion.setText("");

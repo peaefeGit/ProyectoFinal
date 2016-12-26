@@ -170,7 +170,10 @@ public class NewJFrameLogin extends javax.swing.JFrame {
        if (actual){
          Usuario logueado = new Usuario(jTextFieldUsuario.getText(), jPasswordField.getText()); 
          Double f = Double.parseDouble(jTextFieldMontoApertura.getText());
-         Date fecha = new Date(); // ARREGLAR FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa
+         java.util.Date dt = new java.util.Date();
+         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");       
+         String fecha = sdf.format(dt);
+         System.out.println(fecha);
          this.cajaA = new Caja(f, logueado, fecha);
          db.guardarCaja(cajaA);
          int id = db.recuperarIdCaja();

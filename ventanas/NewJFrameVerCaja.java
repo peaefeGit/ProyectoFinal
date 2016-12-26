@@ -7,6 +7,8 @@ package ventanas;
 
 import clases.Caja;
 import clases.MySQL;
+import clases.Producto;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,6 +26,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         this.principal = principal;
         this.db = db;
         initComponents();
+        db.mostrarCaja(jTableMov, cajaActual.getIdCaja());
         setLocationRelativeTo(null);
         setResizable(false);
         //setDefaultCloseOperation(0);//anula la CRUZ exit
@@ -54,6 +57,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
         jTextFieldApertura = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMov = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,13 +107,22 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tipo", "Monto", "Responsable", "Fecha"
+                "Id", "Tipo", "Monto", "Responsable", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(jTableMov);
 
         jPanelCaja.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 110, 400, 230);
+        jScrollPane1.setBounds(10, 110, 400, 220);
+
+        jButton1.setText("Ver detalle");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanelCaja.add(jButton1);
+        jButton1.setBounds(200, 340, 100, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja2.png"))); // NOI18N
         jPanelCaja.add(jLabel1);
@@ -133,6 +146,19 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
        this.principal.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonPrincipalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int row = jTableMov.getSelectedRow();        
+        String tipo = jTableMov.getModel().getValueAt(row,1).toString();
+        if (tipo.equals("Venta")){
+            ArrayList<Integer> lista = new ArrayList<Integer>();
+            int i = Integer.parseInt(jTableMov.getModel().getValueAt(row,0).toString());
+            lista = db.mostrarMovProd(i);
+          
+            NewJFrameDetalleVenta v = new NewJFrameDetalleVenta(lista, db);
+            v.setVisible(true);            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +196,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAperturaCaja;
