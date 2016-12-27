@@ -67,6 +67,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         jButtonMenuPrincipal = new javax.swing.JButton();
         jRadioButtonDeposito = new javax.swing.JRadioButton();
         jRadioButtonExtraccion = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,7 +111,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
 
         jButtonMovimiento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonMovimiento.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonMovimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/realizarpago.png"))); // NOI18N
+        jButtonMovimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/realizarpago32x32.png"))); // NOI18N
         jButtonMovimiento.setText("Realizar Movimiento");
         jButtonMovimiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonMovimiento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -120,7 +121,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
             }
         });
         jPanelMovCaja.add(jButtonMovimiento);
-        jButtonMovimiento.setBounds(240, 220, 150, 70);
+        jButtonMovimiento.setBounds(259, 231, 160, 59);
 
         jLabelUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,7 +153,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
 
         jButtonMenuPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonMenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal.png"))); // NOI18N
+        jButtonMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuPrincipal32x32(3).png"))); // NOI18N
         jButtonMenuPrincipal.setText("Menu Principal");
         jButtonMenuPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonMenuPrincipal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -162,7 +163,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
             }
         });
         jPanelMovCaja.add(jButtonMenuPrincipal);
-        jButtonMenuPrincipal.setBounds(80, 220, 144, 70);
+        jButtonMenuPrincipal.setBounds(140, 230, 120, 60);
 
         jRadioButtonDeposito.setBackground(new java.awt.Color(106, 79, 72));
         buttonGroupMovimiento.add(jRadioButtonDeposito);
@@ -179,6 +180,20 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
         jRadioButtonExtraccion.setText("Extracción");
         jPanelMovCaja.add(jRadioButtonExtraccion);
         jRadioButtonExtraccion.setBounds(150, 100, 110, 23);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        jButton1.setText("Generar Reporte");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanelMovCaja.add(jButton1);
+        jButton1.setBounds(0, 230, 140, 60);
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/movimientodecaja3.png"))); // NOI18N
         jPanelMovCaja.add(jLabelFondo);
@@ -312,6 +327,10 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
     private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
         presEnterMovimientoCaja(evt);
     }//GEN-LAST:event_jPasswordFieldKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void presEnterMovimientoCaja (java.awt.event.KeyEvent evt){
         char teclaPres = evt.getKeyChar();
         if (teclaPres == KeyEvent.VK_ENTER){
@@ -355,6 +374,7 @@ public class NewJFrameMovimientoCaja extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupMovimiento;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonMenuPrincipal;
     private javax.swing.JButton jButtonMovimiento;
     private javax.swing.JLabel jLabelDescripcion;

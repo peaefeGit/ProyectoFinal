@@ -9,6 +9,7 @@ import clases.Caja;
 import clases.MySQL;
 import clases.Producto;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -159,6 +160,7 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPrincipalActionPerformed
 
     private void jButtonDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetallesActionPerformed
+     try{
         int row = jTableMov.getSelectedRow();        
         String tipo = jTableMov.getModel().getValueAt(row,1).toString();
         if (tipo.equals("Venta")){
@@ -169,6 +171,9 @@ public class NewJFrameVerCaja extends javax.swing.JFrame {
             NewJFrameDetalleVenta v = new NewJFrameDetalleVenta(lista, db);
             v.setVisible(true);            
         }
+     }catch(Exception e){
+         JOptionPane.showMessageDialog(null, "SELECCIONE VENTA", "ERROR", JOptionPane.ERROR_MESSAGE);
+     }   
     }//GEN-LAST:event_jButtonDetallesActionPerformed
 
     /**
